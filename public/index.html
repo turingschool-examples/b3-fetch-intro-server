@@ -2,39 +2,47 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Palette Picker</title>
   </head>
   <body>
 
     <nav>
-      <h1>Palette Picker</h1>
+      <h1 class="title">Palette Picker</h1>
     </nav>
 
-    <article class="">
-      <h2>Projects</h2>
-      <input type="text" name="" value="">
-      <input type="submit" name="" value="create">
-      <!-- this is where we will append project directories -->
-    </article>
-
-    <main>
-      <article class="">
-        <h2>Current Palette</h2>
-        <p>here are the instructions</p>
-        <div>color1</div>
-        <div>color2</div>
-        <div>color3</div>
-        <div>color4</div>
-        <div>color5</div>
+    <main class="main">
+      <article class="projects">
+        <h2>Projects</h2>
+        <input type="text" name="" value="">
+        <input type="submit" name="" value="create">
+        <!-- this is where we will append project directories -->
       </article>
 
-      <article class="">
-        <h2>Save this palette</h2>
-        <input type="text" name="" value="">
-        <input type="text" name="" value="">
-        <input type="submit" name="" value="save!">
-      </article>
+      <section class="main-right">
+        <article class="pick-palette">
+          <h2>Current Palette</h2>
+          <p>here are the instructions</p>
+          <section class="colors">
+            <div id="color1"></div>
+            <div id="color2"></div>
+            <div id="color3"></div>
+            <div id="color4"></div>
+            <div id="color5"></div>
+          </section>
+        </article>
+
+        <article class="save-palette">
+          <h2>Save this palette</h2>
+          <select type="text" name="" value="">
+            <option value="value1" selected>Value 1</option>
+            <option value="value2">Value 2</option>
+          </select>
+          <input type="text" name="" value="">
+          <input type="submit" name="" value="save!">
+        </article>
+      </section>
     </main>
 
   </body>
