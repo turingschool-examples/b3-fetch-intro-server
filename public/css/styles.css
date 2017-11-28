@@ -6,15 +6,22 @@
 }
 
 body {
-  background-image: url(../../assets/background.jpg);
+  background-image: url(../../assets/background2.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .title {
-  font-size: 200%;
-  margin: 15px;
+  font-size: 220%;
+  padding: 15px 0 0 20px;
+  text-transform: uppercase;
   color: #fff;
+}
+
+.main-body {
+  background-color: rgba(10, 10, 10, 0.65);
+  width: 80%;
+  margin: 0px auto;
 }
 
 .main {
@@ -22,22 +29,22 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  width: 85%;
-  margin: 30px auto;
-  background-color: rgba(10, 10, 10, 0.5);
-  border-radius: 15px;
-  height: 70vh;
-  padding: 10px;
+  height: 100vh;
+  padding: 0 10px;
 }
 
 .projects {
   width: 27.5%;
   background-color: #212121;
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   margin: 15px 0;
   height: 90%;
-  border-radius: 5px;
+  border-radius: 1px;
+}
+
+.subtitle {
+  padding-bottom: 8px;
 }
 
 #new-project {
@@ -45,6 +52,12 @@ body {
   border-radius: 1px;
   height: 25px;
   font-size: 75%;
+  width: 160px;
+  padding-left: 5px;
+}
+
+#new-project::placeholder {
+  color: grey;
 }
 
 #new-project:focus {
@@ -58,6 +71,27 @@ body {
   width: 70px;
 }
 
+#new-project-btn:hover {
+  background-color: #DADAE2;
+}
+
+.project-directory {
+  width: 90%;
+  margin-top: 30px;
+}
+
+.saved-project {
+  margin: 10px 0 20px 2px;
+}
+
+.project-list {
+  margin-left: 20px;
+}
+
+li {
+  padding-top: 10px;
+}
+
 .main-right {
   width: 67.5%;
 }
@@ -65,9 +99,9 @@ body {
 .pick-palette {
   background-color: #212121;
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   margin: 15px 0;
-  border-radius: 5px;
+  border-radius: 1px;
 }
 
 .colors {
@@ -86,9 +120,9 @@ body {
 .save-palette {
   background-color: #212121;
   color: #fff;
-  padding: 10px;
+  padding: 15px;
   margin: 15px 0;
-  border-radius: 5px;
+  border-radius: 1px;
 }
 
 #project-menu {
@@ -101,6 +135,13 @@ body {
   border: none;
   border-radius: 1px;
   height: 25px;
+  width: 160px;
+  padding-left: 5px;
+  font-size: 75%;
+}
+
+#new-palette::placeholder {
+  color: grey;
 }
 
 #new-palette:focus {
@@ -113,7 +154,10 @@ body {
   height: 25px;
   width: 70px;
   font-size: 75%;
+}
 
+#new-palette-btn:hover {
+  background-color: #DADAE2;
 }
 
 #color1 {
@@ -144,4 +188,9 @@ body {
   border: none;
   border-radius: 1px;
   height: 25px;
+  font-size: 80%;
+}
+
+.generate-btn:hover {
+  background-color: #DADAE2;
 }

@@ -7,51 +7,63 @@
     <title>Palette Picker</title>
   </head>
   <body>
+    <section class="main-body">
+      <nav>
+        <h1 class="title">Palette Picker</h1>
+      </nav>
 
-    <nav>
-      <h1 class="title">Palette Picker</h1>
-    </nav>
+      <main class="main">
+        <article class="projects">
+          <h2 class="subtitle">Projects</h2>
+          <input id="new-project" type="text" placeholder="New Project Name">
+          <input id="new-project-btn" type="submit" name="" value="create">
+          <!-- this is where we will append project directories -->
+          <section class="project-directory">
+            <aside class="saved-project">
+              <h4>Dummy Project</h4>
+              <ul class="project-list">
+                <li>Palette1</li>
+                <li>Palette2</li>
+              </ul>
+            </aside>
 
-    <main class="main">
-      <article class="projects">
-        <h2>Projects</h2>
-        <input id="new-project" type="text" name="" value="">
-        <input id="new-project-btn" type="submit" name="" value="create">
-        <!-- this is where we will append project directories -->
-        <h4>Dummy Project</h4>
-        <ul>
-          <li>Palette1</li>
-          <li>Palette2</li>
-        </ul>
-      </article>
-
-      <section class="main-right">
-        <article class="pick-palette">
-          <h2>Current Palette</h2>
-          <p>here are the instructions</p>
-          <section class="colors">
-            <div id="color1"></div>
-            <div id="color2"></div>
-            <div id="color3"></div>
-            <div id="color4"></div>
-            <div id="color5"></div>
+            <aside class="saved-project">
+              <h4>Dummy Project2</h4>
+              <ul class="project-list">
+                <li>Palette1</li>
+                <li>Palette2</li>
+              </ul>
+            </aside>
           </section>
-          <button type="button" name="generate" class="generate-btn">
-            Generate More Colors
-          </button>
         </article>
 
-        <article class="save-palette">
-          <h2>Save this palette</h2>
-          <select id="project-menu" type="text" name="" value="">
-            <option value="value1" selected>Value 1</option>
-            <option value="value2">Value 2</option>
-          </select>
-          <input id="new-palette" type="text" name="" value="">
-          <input id="new-palette-btn" type="submit" name="" value="save!">
-        </article>
-      </section>
-    </main>
+        <section class="main-right">
+          <article class="pick-palette">
+            <h2 class="subtitle">Build a Palette</h2>
+            <p>Click the button below to sort through different colors. If you want to save a color to your palette, click it! The next time you click the 'generate more colors' button, any saved colors will stay, and the remaining colors will be replaced with new colors.</p>
+            <section class="colors">
+              <div id="color1"></div>
+              <div id="color2"></div>
+              <div id="color3"></div>
+              <div id="color4"></div>
+              <div id="color5"></div>
+            </section>
+            <button type="button" name="generate" class="generate-btn">
+              Generate More Colors
+            </button>
+          </article>
 
+          <article class="save-palette">
+            <h2 class="subtitle">Save this palette</h2>
+            <select id="project-menu" type="text" name="" value="">
+              <option value="value1" selected>Value 1</option>
+              <option value="value2">Value 2</option>
+            </select>
+            <input id="new-palette" type="text" name="" value="" placeholder="New Palette Name">
+            <input id="new-palette-btn" type="submit" name="" value="save!">
+          </article>
+        </section>
+      </main>
+    </section>
   </body>
 </html>
