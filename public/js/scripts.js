@@ -17,7 +17,7 @@ const addProject = () => {
 const updateRandomColors = () => {
   for (var i = 0; i < 6; i++) {
 
-  if(!$(`.color${i}`).hasClass('unlocked-image')) {
+  if(!$(`.color${i}`).hasClass('favorited')) {
     let color = generateColors();
     $(`.color${i}`).css('background-color', color);
     $(`.hex-code${i}`).text(color);
@@ -56,3 +56,8 @@ $('.generate-btn').on('click', updateRandomColors);
 $('#new-palette-btn').on('click', savePalette);
 $('.empty-heart-icon').on('click', toggleFavorite);
 $('.full-heart-icon').on('click', toggleFavorite);
+
+$('.empty-heart-icon').on('click', (e) => {
+  $(e.target).toggleClass('full-heart-icon');
+  $(e.target).parents('.color').toggleClass('favorited');
+})
