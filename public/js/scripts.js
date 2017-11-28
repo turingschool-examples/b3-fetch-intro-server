@@ -1,8 +1,4 @@
-$('#new-project-btn').on('click', addProject);
-$('.generate-btn').on('click', generateColors);
-$('#new-palette-btn').on('click', savePalette);
-
-function addProject() {
+const addProject = () => {
   let newProjectName = $('#new-project').val();
   $('.project-directory').prepend(`
     <aside class="saved-project">
@@ -14,15 +10,18 @@ function addProject() {
   $('#new-project').val('');
 };
 
-function generateColors() {
-  console.log('in gen colors');
+const generateColors = () => {
   //call a helper to determine how many colors need to be generated
   //generate that many Colors
-  //pass that shit to another helper that will change the color magically
-  //get it into HEX if its not and prepend that to the page
+  const characters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += characters[Math.floor(Math.random() * 16)];
+  };
+  return color;
 };
 
-function savePalette() {
+const savePalette = () => {
   let project = $('#project-menu').find(':selected').text();
   let paletteName = $('#new-palette').val();
   //need to grab the HEX codes tha belong with this palette
@@ -31,3 +30,22 @@ function savePalette() {
   console.log(project, paletteName);
   $('#new-palette').val('');
 }
+
+$(document).ready(() => {
+  updateRandomColors();
+});
+
+const updateRandomColors = () => {
+  for (var i = 0; i < 6; i++) {
+
+  if(!$(`.color${i}`).hasClass('unlocked-image')) {
+    let color = generateColors();
+    $(`.color${i}`).css('background-color', color);
+    $(`.hex-code${i}`).text(color);
+  };
+ };
+}
+
+$('#new-project-btn').on('click', addProject);
+$('.generate-btn').on('click', updateRandomColors);
+$('#new-palette-btn').on('click', savePalette);
