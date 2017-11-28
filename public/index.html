@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Palette Picker</title>
   </head>
@@ -15,9 +15,14 @@
     <main class="main">
       <article class="projects">
         <h2>Projects</h2>
-        <input type="text" name="" value="">
-        <input type="submit" name="" value="create">
+        <input id="new-project" type="text" name="" value="">
+        <input id="new-project-btn" type="submit" name="" value="create">
         <!-- this is where we will append project directories -->
+        <h4>Dummy Project</h4>
+        <ul>
+          <li>Palette1</li>
+          <li>Palette2</li>
+        </ul>
       </article>
 
       <section class="main-right">
@@ -31,16 +36,19 @@
             <div id="color4"></div>
             <div id="color5"></div>
           </section>
+          <button type="button" name="generate" class="generate-btn">
+            Generate More Colors
+          </button>
         </article>
 
         <article class="save-palette">
           <h2>Save this palette</h2>
-          <select type="text" name="" value="">
+          <select id="project-menu" type="text" name="" value="">
             <option value="value1" selected>Value 1</option>
             <option value="value2">Value 2</option>
           </select>
-          <input type="text" name="" value="">
-          <input type="submit" name="" value="save!">
+          <input id="new-palette" type="text" name="" value="">
+          <input id="new-palette-btn" type="submit" name="" value="save!">
         </article>
       </section>
     </main>

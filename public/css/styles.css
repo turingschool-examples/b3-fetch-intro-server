@@ -2,19 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Raleway, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 body {
-background-image: url(../../assets/background.jpg);
-background-repeat: no-repeat;
-background-size: cover;
-/*height: 100vh;*/
+  background-image: url(../../assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .title {
   font-size: 200%;
   margin: 15px;
+  color: #fff;
 }
 
 .main {
@@ -40,6 +40,24 @@ background-size: cover;
   border-radius: 5px;
 }
 
+#new-project {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+  font-size: 75%;
+}
+
+#new-project:focus {
+  outline: none;
+}
+
+#new-project-btn {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+  width: 70px;
+}
+
 .main-right {
   width: 67.5%;
 }
@@ -62,7 +80,7 @@ background-size: cover;
 
 .colors div {
   width: 15%;
-  height: 80px;
+  height: 100px;
 }
 
 .save-palette {
@@ -71,6 +89,31 @@ background-size: cover;
   padding: 10px;
   margin: 15px 0;
   border-radius: 5px;
+}
+
+#project-menu {
+  border: none;
+  height: 25px;
+  width: 70px;
+}
+
+#new-palette {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+}
+
+#new-palette:focus {
+  outline: none;
+}
+
+#new-palette-btn {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+  width: 70px;
+  font-size: 75%;
+
 }
 
 #color1 {
@@ -91,4 +134,14 @@ background-size: cover;
 
 #color5 {
   background-color: #7E1946;
+}
+
+.generate-btn {
+  padding: 3px 5px;
+  margin: 0 auto;
+  display: block;
+  width: 25%;
+  border: none;
+  border-radius: 1px;
+  height: 25px;
 }
