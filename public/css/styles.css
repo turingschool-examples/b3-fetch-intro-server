@@ -116,7 +116,7 @@ li {
   background-color: #fff;
   color: #212121;
   padding-bottom: 15px;
-  margin: 15px 0;
+  /*margin: 15px 0;*/
   border-radius: 1px;
 }
 
@@ -124,7 +124,6 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 15px;
   margin-bottom: 15px;
 }
 
@@ -178,26 +177,6 @@ li {
 #new-palette-btn:hover {
   background-color: #DADAE2;
 }
-
-/*#color1 {
-  background-color: #A63446;
-}
-
-#color2 {
-  background-color: #FBFEF9;
-}
-
-#color3 {
-  background-color: #0C6291;
-}
-
-#color4 {
-  background-color: #615756;
-}
-
-#color5 {
-  background-color: #7E1946;
-}*/
 
 .generate-btn {
   padding: 3px 5px;
