@@ -1,0 +1,147 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background-image: url(../../assets/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  font-size: 200%;
+  margin: 15px;
+  color: #fff;
+}
+
+.main {
+  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 85%;
+  margin: 30px auto;
+  background-color: rgba(10, 10, 10, 0.5);
+  border-radius: 15px;
+  height: 70vh;
+  padding: 10px;
+}
+
+.projects {
+  width: 27.5%;
+  background-color: #212121;
+  color: #fff;
+  padding: 10px;
+  margin: 15px 0;
+  height: 90%;
+  border-radius: 5px;
+}
+
+#new-project {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+  font-size: 75%;
+}
+
+#new-project:focus {
+  outline: none;
+}
+
+#new-project-btn {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+  width: 70px;
+}
+
+.main-right {
+  width: 67.5%;
+}
+
+.pick-palette {
+  background-color: #212121;
+  color: #fff;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.colors div {
+  width: 15%;
+  height: 100px;
+}
+
+.save-palette {
+  background-color: #212121;
+  color: #fff;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 5px;
+}
+
+#project-menu {
+  border: none;
+  height: 25px;
+  width: 70px;
+}
+
+#new-palette {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+}
+
+#new-palette:focus {
+  outline: none;
+}
+
+#new-palette-btn {
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+  width: 70px;
+  font-size: 75%;
+
+}
+
+#color1 {
+  background-color: #A63446;
+}
+
+#color2 {
+  background-color: #FBFEF9;
+}
+
+#color3 {
+  background-color: #0C6291;
+}
+
+#color4 {
+  background-color: #615756;
+}
+
+#color5 {
+  background-color: #7E1946;
+}
+
+.generate-btn {
+  padding: 3px 5px;
+  margin: 0 auto;
+  display: block;
+  width: 25%;
+  border: none;
+  border-radius: 1px;
+  height: 25px;
+}
