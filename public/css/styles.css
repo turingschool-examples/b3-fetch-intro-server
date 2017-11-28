@@ -12,7 +12,7 @@ body {
 }
 
 .title {
-  font-size: 200%;
+  font-size: 220%;
   padding: 15px 0 0 20px;
   text-transform: uppercase;
   color: #fff;
@@ -71,6 +71,10 @@ body {
   width: 70px;
 }
 
+#new-project-btn:hover {
+  background-color: #DADAE2;
+}
+
 .project-directory {
   width: 90%;
   margin-top: 30px;
@@ -78,11 +82,9 @@ body {
 
 .saved-project {
   margin: 10px 0 20px 2px;
-  /*outline: 2px solid yellow;*/
 }
 
 .project-list {
-  /*list-style: none;*/
   margin-left: 20px;
 }
 
@@ -154,6 +156,10 @@ li {
   font-size: 75%;
 }
 
+#new-palette-btn:hover {
+  background-color: #DADAE2;
+}
+
 #color1 {
   background-color: #A63446;
 }
@@ -183,4 +189,8 @@ li {
   border-radius: 1px;
   height: 25px;
   font-size: 80%;
+}
+
+.generate-btn:hover {
+  background-color: #DADAE2;
 }
