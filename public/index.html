@@ -2,8 +2,10 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="jquery-3.2.1.min.js"></script>
     <title>Palette Picker</title>
   </head>
   <body>
@@ -11,13 +13,11 @@
       <nav>
         <h1 class="title">Palette Picker</h1>
       </nav>
-
       <main class="main">
         <article class="projects">
           <h2 class="subtitle">Projects</h2>
           <input id="new-project" type="text" placeholder="New Project Name">
-          <input id="new-project-btn" type="submit" name="" value="create">
-          <!-- this is where we will append project directories -->
+          <input id="new-project-btn" type="submit">
           <section class="project-directory">
             <aside class="saved-project">
               <h4>Dummy Project</h4>
@@ -26,17 +26,8 @@
                 <li>Palette2</li>
               </ul>
             </aside>
-
-            <aside class="saved-project">
-              <h4>Dummy Project2</h4>
-              <ul class="project-list">
-                <li>Palette1</li>
-                <li>Palette2</li>
-              </ul>
-            </aside>
           </section>
         </article>
-
         <section class="main-right">
           <article class="pick-palette">
             <h2 class="subtitle">Build a Palette</h2>
@@ -52,7 +43,6 @@
               Generate More Colors
             </button>
           </article>
-
           <article class="save-palette">
             <h2 class="subtitle">Save this palette</h2>
             <select id="project-menu" type="text" name="" value="">
@@ -65,5 +55,9 @@
         </section>
       </main>
     </section>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script
+    type="text/javascript" src="js/scripts.js">
+    </script>
   </body>
 </html>
