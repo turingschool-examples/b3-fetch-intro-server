@@ -129,15 +129,18 @@ li {
 .color {
   width: 20%;
   height: 55vh;
+  position: relative;
 }
 
 .empty-heart-icon {
   background-image: url(../../assets/empty-heart.svg);
-  background-position: bottom;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 }
 
 .full-heart-icon {
@@ -145,8 +148,8 @@ li {
   background-position: bottom;
   background-size: contain;
   background-repeat: no-repeat;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 }
 
 .save-palette {
