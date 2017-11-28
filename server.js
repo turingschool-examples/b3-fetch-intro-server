@@ -14,9 +14,34 @@ app.locals.projects = [
   { id: 'a1', project: 'Palette Picker'}
 ];
 
+app.get('/', (request, response) => {
+  response.send('You are in Palette Picker!');
+});
+
 app.get('/api/v1/projects', (request, response) => {
+  //retrieve all projects
   response.send('testing')
 });
+
+app.get('/api/v1/projects/:id/palettes', (request, response) => {
+  //retrieve all palettes of a specific project
+});
+
+app.post('/api/v1/projects', (request, response) => {
+  const project = request.body;
+  //create a new project
+});
+
+app.post('/api/v1/palettes', (request, response) => {
+  const palette = request.body;
+  //create a new palette
+});
+
+app.delete('/api/v1/palettes/:id', (request, response) => {
+  const { id } = request.params;
+
+  //delete that palette
+})
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
