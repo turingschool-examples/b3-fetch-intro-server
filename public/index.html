@@ -14,24 +14,9 @@
         <h1 class="title">Palette Picker</h1>
       </nav>
       <main class="main">
-        <article class="projects">
-          <h2 class="subtitle">Projects</h2>
-          <input id="new-project" type="text" placeholder="New Project Name">
-          <input id="new-project-btn" type="submit">
-          <section class="project-directory">
-            <aside class="saved-project">
-              <h4>Dummy Project</h4>
-              <ul class="project-list">
-                <li>Palette1</li>
-                <li>Palette2</li>
-              </ul>
-            </aside>
-          </section>
-        </article>
-        <section class="main-right">
+
+        <section class="main-left">
           <article class="pick-palette">
-            <h2 class="subtitle">Build a Palette</h2>
-            <p>Click the button below to sort through different colors. If you want to save a color to your palette, click it! The next time you click the 'generate more colors' button, any saved colors will stay, and the remaining colors will be replaced with new colors.</p>
             <section class="colors">
               <div id="color1"></div>
               <div id="color2"></div>
@@ -42,9 +27,8 @@
             <button type="button" name="generate" class="generate-btn">
               Generate More Colors
             </button>
-          </article>
-          <article class="save-palette">
-            <h2 class="subtitle">Save this palette</h2>
+
+            <h3 class="subtitle">Save this palette</h2>
             <select id="project-menu" type="text" name="" value="">
               <option value="value1" selected>Value 1</option>
               <option value="value2">Value 2</option>
@@ -53,6 +37,24 @@
             <input id="new-palette-btn" type="submit" name="" value="save!">
           </article>
         </section>
+
+        <article class="projects">
+          <section class="projects-form">
+            <h2 class="projects-subtitle">Projects</h2>
+            <input id="new-project" type="text" placeholder="New Project Name">
+            <input id="new-project-btn" type="submit">
+          </section>
+
+          <section class="project-directory">
+            <aside class="saved-project">
+              <h4>Dummy Project</h4>
+              <ul class="project-list">
+                <li>Palette1</li>
+                <li>Palette2</li>
+              </ul>
+            </aside>
+          </section>
+        </article>
       </main>
     </section>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>

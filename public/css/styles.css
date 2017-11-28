@@ -19,41 +19,50 @@ body {
 }
 
 .main-body {
-  background-color: rgba(10, 10, 10, 0.65);
-  width: 80%;
-  margin: 0px auto;
+  background-color: rgba(10, 10, 10, 0.25);
+  position: relative;
+  z-index: 1;
 }
 
 .main {
   display: block;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
   height: 100vh;
   padding: 0 10px;
+  width: 80%;
+  margin: 0px auto;
 }
 
 .projects {
-  width: 27.5%;
-  background-color: #212121;
-  color: #fff;
-  padding: 15px;
-  margin: 15px 0;
-  height: 90%;
+  top: 0;
+  left: 45%;
+  width: 45%;
+  height: 100vh;
+  background-color: #fff;
+  color: #212121;
   border-radius: 1px;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 20px 0px #66666A;
 }
 
-.subtitle {
-  padding-bottom: 8px;
+.projects-form {
+  padding-left: 35%;
+}
+
+.projects-subtitle {
+  padding: 24px 0 12px 0;
 }
 
 #new-project {
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   height: 25px;
   font-size: 75%;
   width: 160px;
   padding-left: 5px;
+  border: 1px solid #212121;
 }
 
 #new-project::placeholder {
@@ -66,9 +75,11 @@ body {
 
 #new-project-btn {
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   height: 25px;
   width: 70px;
+  background-color: #212121;
+  color: #fff;
 }
 
 #new-project-btn:hover {
@@ -78,6 +89,7 @@ body {
 .project-directory {
   width: 90%;
   margin-top: 30px;
+  padding-left: 35%;
 }
 
 .saved-project {
@@ -92,14 +104,18 @@ li {
   padding-top: 10px;
 }
 
-.main-right {
-  width: 67.5%;
+.main-left {
+  width: 45%;
+  position: absolute;
+  z-index: 3;
+  box-shadow: 5px 5px 20px 0px #66666A;
+
 }
 
 .pick-palette {
-  background-color: #212121;
-  color: #fff;
-  padding: 15px;
+  background-color: #fff;
+  color: #212121;
+  padding-bottom: 15px;
   margin: 15px 0;
   border-radius: 1px;
 }
@@ -113,13 +129,13 @@ li {
 }
 
 .colors div {
-  width: 15%;
-  height: 100px;
+  width: 20%;
+  height: 50vh;
 }
 
 .save-palette {
-  background-color: #212121;
-  color: #fff;
+  background-color: #fff;
+  color: #212121;
   padding: 15px;
   margin: 15px 0;
   border-radius: 1px;
@@ -133,11 +149,12 @@ li {
 
 #new-palette {
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   height: 25px;
   width: 160px;
   padding-left: 5px;
   font-size: 75%;
+  border: 1px solid #212121;
 }
 
 #new-palette::placeholder {
@@ -150,10 +167,12 @@ li {
 
 #new-palette-btn {
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   height: 25px;
   width: 70px;
   font-size: 75%;
+  background-color: #212121;
+  color: #fff;
 }
 
 #new-palette-btn:hover {
@@ -186,9 +205,11 @@ li {
   display: block;
   width: 25%;
   border: none;
-  border-radius: 1px;
+  border-radius: 2px;
   height: 25px;
   font-size: 80%;
+  background-color: #212121;
+  color: #fff;
 }
 
 .generate-btn:hover {
