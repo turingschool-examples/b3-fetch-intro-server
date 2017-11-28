@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+//const md5 = require('md5');
 const app = express();
 
 app.use(bodyParser.json());
@@ -34,8 +35,8 @@ app.get('/api/v1/projects/:id', (request, response) => {
 });
 
 app.get('/api/v1/projects/:id/palettes', (request, response) => {
+  const { palette } = request.body;
   //retrieve all palettes of a specific project
-
 });
 
 app.post('/api/v1/projects', (request, response) => {
