@@ -126,9 +126,27 @@ li {
   margin-bottom: 15px;
 }
 
-.colors div {
+.color {
   width: 20%;
   height: 55vh;
+}
+
+.empty-heart-icon {
+  background-image: url(../../assets/empty-heart.svg);
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+}
+
+.full-heart-icon {
+  background-image: url(../../assets/full-heart.svg);
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
 }
 
 .save-palette {
