@@ -29,4 +29,5 @@ function savePalette() {
   //append the name and baby-palette to the UL on left file tree
   //need to interact with BE here - send this palette to DB
   console.log(project, paletteName);
+  $('#new-palette').val('');
 }
