@@ -38,7 +38,7 @@ body {
   width: 45%;
   height: 100vh;
   background-color: #fff;
-  color: #212121;
+  color: #313132;
   border-radius: 1px;
   position: absolute;
   z-index: 2;
@@ -62,7 +62,7 @@ body {
   font-size: 75%;
   width: 160px;
   padding-left: 5px;
-  border: 1px solid #212121;
+  border: 1px solid #313132;
 }
 
 #new-project::placeholder {
@@ -78,7 +78,7 @@ body {
   border-radius: 2px;
   height: 25px;
   width: 70px;
-  background-color: #212121;
+  background-color: #313132;
   color: #fff;
 }
 
@@ -106,17 +106,16 @@ li {
 
 .main-left {
   width: 45%;
+  top: 90px;
   position: absolute;
   z-index: 3;
   box-shadow: 5px 5px 20px 0px #66666A;
-
 }
 
 .pick-palette {
   background-color: #fff;
-  color: #212121;
+  color: #313132;
   padding-bottom: 15px;
-  margin: 15px 0;
   border-radius: 1px;
 }
 
@@ -124,18 +123,38 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.colors div {
+.color {
   width: 20%;
-  height: 50vh;
+  height: 55vh;
+  position: relative;
+}
+
+.empty-heart-icon {
+  background-image: url(../../assets/empty-heart.svg);
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+}
+
+.full-heart-icon {
+  background-image: url(../../assets/full-heart.svg);
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
 }
 
 .save-palette {
   background-color: #fff;
-  color: #212121;
+  color: #313132;
   padding: 15px;
   margin: 15px 0;
   border-radius: 1px;
@@ -145,6 +164,15 @@ li {
   border: none;
   height: 25px;
   width: 70px;
+  margin-right: 10px;
+}
+
+.new-palette-container {
+  margin: 10px 15px;
+}
+
+.palette-subtitle {
+  margin: 10px 0;
 }
 
 #new-palette {
@@ -154,7 +182,9 @@ li {
   width: 160px;
   padding-left: 5px;
   font-size: 75%;
-  border: 1px solid #212121;
+  border: 1px solid #313132;
+  margin-right: 10px;
+
 }
 
 #new-palette::placeholder {
@@ -171,32 +201,12 @@ li {
   height: 25px;
   width: 70px;
   font-size: 75%;
-  background-color: #212121;
+  background-color: #313132;
   color: #fff;
 }
 
 #new-palette-btn:hover {
   background-color: #DADAE2;
-}
-
-#color1 {
-  background-color: #A63446;
-}
-
-#color2 {
-  background-color: #FBFEF9;
-}
-
-#color3 {
-  background-color: #0C6291;
-}
-
-#color4 {
-  background-color: #615756;
-}
-
-#color5 {
-  background-color: #7E1946;
 }
 
 .generate-btn {
@@ -208,7 +218,7 @@ li {
   border-radius: 2px;
   height: 25px;
   font-size: 80%;
-  background-color: #212121;
+  background-color: #313132;
   color: #fff;
 }
 
