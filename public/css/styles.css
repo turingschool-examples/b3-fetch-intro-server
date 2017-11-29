@@ -119,6 +119,12 @@ li {
   border-radius: 1px;
 }
 
+.hex-code {
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
 .colors {
   display: flex;
   flex-direction: row;
@@ -129,18 +135,19 @@ li {
 .color {
   width: 20%;
   height: 55vh;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .empty-heart-icon {
   background-image: url(../../assets/empty-heart.svg);
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
   background-size: contain;
   background-repeat: no-repeat;
   height: 25px;
   width: 25px;
+  margin-top: 15px;
 }
 
 .full-heart-icon {
@@ -150,6 +157,7 @@ li {
   background-repeat: no-repeat;
   height: 25px;
   width: 25px;
+  margin-top: 15px;
 }
 
 .save-palette {
