@@ -19,12 +19,14 @@ app.get('/', (request, response) => {
   response.send('You are in Palette Picker!');
 });
 
+//get ALL projects
 app.get('/api/v1/projects', (request, response) => {
   //retrieve all projects
   //if (project) { return response.status(200).json(project)}
   response.json(app.locals.projects);
 });
 
+//get a specific project
 app.get('/api/v1/projects/:id', (request, response) => {
   //retrieve all projects
   const { id } = request.params;
@@ -34,11 +36,13 @@ app.get('/api/v1/projects/:id', (request, response) => {
   //else return response.sendStatus(404);
 });
 
+//get palettes of a specific project
 app.get('/api/v1/projects/:id/palettes', (request, response) => {
   const { palette } = request.body;
   //retrieve all palettes of a specific project
 });
 
+//post all projects
 app.post('/api/v1/projects', (request, response) => {
   const project = request.body;
   //create a new project
@@ -50,11 +54,13 @@ app.post('/api/v1/projects', (request, response) => {
   //return response.status(201).json({ id, project})
 });
 
+//post ALL palettes
 app.post('/api/v1/palettes', (request, response) => {
   const palette = request.body;
   //create a new palette
 });
 
+//delete a specific palette
 app.delete('/api/v1/palettes/:id', (request, response) => {
   const { id } = request.params;
 
