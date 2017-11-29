@@ -22,7 +22,7 @@ app.get('/', (request, response) => {
 app.get('/api/v1/projects', (request, response) => {
   //retrieve all projects
   //if (project) { return response.status(200).json(project)}
-  response.json(app.locals.projects)
+  response.json(app.locals.projects);
 });
 
 app.get('/api/v1/projects/:id', (request, response) => {
@@ -62,8 +62,8 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
   //if the user is not an id that matches:
   //  response.status(404).({ error: 'no palettes match!'})
   //if it works:
-    // response.sendStatus(204)
-})
+  // response.sendStatus(204)
+});
 
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
