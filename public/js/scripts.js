@@ -17,12 +17,12 @@ const addProject = () => {
 const updateRandomColors = () => {
   for (var i = 0; i < 6; i++) {
 
-  if (!$(`.color${i}`).hasClass('favorited')) {
-    let color = generateColors();
-    $(`.color${i}`).css('background-color', color);
-    $(`.hex-code${i}`).text(color);
+    if (!$(`.color${i}`).hasClass('favorited')) {
+      let color = generateColors();
+      $(`.color${i}`).css('background-color', color);
+      $(`.hex-code${i}`).text(color);
+    }
   }
- }
 };
 
 const generateColors = () => {
@@ -59,4 +59,4 @@ $('.full-heart-icon').on('click', toggleFavorite);
 $('.empty-heart-icon').on('click', (event) => {
   $(event.target).toggleClass('full-heart-icon');
   $(event.target).parents('.color').toggleClass('favorited');
-})
+});
