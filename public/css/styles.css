@@ -32,6 +32,136 @@ body {
   margin: 0px auto;
 }
 
+.main-left {
+  width: 45%;
+  top: 90px;
+  position: absolute;
+  z-index: 3;
+  box-shadow: 5px 5px 20px 0px #66666A;
+}
+
+.pick-palette {
+  background-color: #fff;
+  color: #313132;
+  padding-bottom: 15px;
+  border-radius: 1px;
+}
+
+.hex-code {
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.color {
+  width: 20%;
+  height: 55vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.empty-heart-icon {
+  background-image: url(../../assets/empty-heart.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  margin-top: 15px;
+}
+
+.full-heart-icon {
+  background-image: url(../../assets/full-heart.svg);
+  background-position: bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 25px;
+  width: 25px;
+  margin-top: 15px;
+}
+
+.generate-btn {
+  padding: 3px 5px;
+  margin: 0 auto;
+  display: block;
+  width: 25%;
+  border: none;
+  border-radius: 2px;
+  height: 25px;
+  font-size: 80%;
+  background-color: #313132;
+  color: #fff;
+}
+
+.generate-btn:hover {
+  background-color: #DADAE2;
+}
+
+.save-palette {
+  background-color: #fff;
+  color: #313132;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 1px;
+}
+
+#project-menu {
+  border: none;
+  height: 25px;
+  width: 70px;
+  margin-right: 10px;
+}
+
+.new-palette-container {
+  margin: 10px 15px;
+}
+
+.palette-subtitle {
+  margin: 10px 0;
+}
+
+#new-palette {
+  border: none;
+  border-radius: 2px;
+  height: 25px;
+  width: 160px;
+  padding-left: 5px;
+  font-size: 75%;
+  border: 1px solid #313132;
+  margin-right: 10px;
+
+}
+
+#new-palette::placeholder {
+  color: grey;
+}
+
+#new-palette:focus {
+  outline: none;
+}
+
+#new-palette-btn {
+  border: none;
+  border-radius: 2px;
+  height: 25px;
+  width: 70px;
+  font-size: 75%;
+  background-color: #313132;
+  color: #fff;
+}
+
+#new-palette-btn:hover {
+  background-color: #DADAE2;
+}
+
 .projects {
   top: 0;
   left: 45%;
@@ -102,134 +232,4 @@ body {
 
 li {
   padding-top: 10px;
-}
-
-.main-left {
-  width: 45%;
-  top: 90px;
-  position: absolute;
-  z-index: 3;
-  box-shadow: 5px 5px 20px 0px #66666A;
-}
-
-.pick-palette {
-  background-color: #fff;
-  color: #313132;
-  padding-bottom: 15px;
-  border-radius: 1px;
-}
-
-.hex-code {
-  color: #fff;
-  text-align: center;
-  padding: 10px 0;
-}
-
-.colors {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 15px;
-}
-
-.color {
-  width: 20%;
-  height: 55vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.empty-heart-icon {
-  background-image: url(../../assets/empty-heart.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 25px;
-  width: 25px;
-  margin-top: 15px;
-}
-
-.full-heart-icon {
-  background-image: url(../../assets/full-heart.svg);
-  background-position: bottom;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 25px;
-  width: 25px;
-  margin-top: 15px;
-}
-
-.save-palette {
-  background-color: #fff;
-  color: #313132;
-  padding: 15px;
-  margin: 15px 0;
-  border-radius: 1px;
-}
-
-#project-menu {
-  border: none;
-  height: 25px;
-  width: 70px;
-  margin-right: 10px;
-}
-
-.new-palette-container {
-  margin: 10px 15px;
-}
-
-.palette-subtitle {
-  margin: 10px 0;
-}
-
-#new-palette {
-  border: none;
-  border-radius: 2px;
-  height: 25px;
-  width: 160px;
-  padding-left: 5px;
-  font-size: 75%;
-  border: 1px solid #313132;
-  margin-right: 10px;
-
-}
-
-#new-palette::placeholder {
-  color: grey;
-}
-
-#new-palette:focus {
-  outline: none;
-}
-
-#new-palette-btn {
-  border: none;
-  border-radius: 2px;
-  height: 25px;
-  width: 70px;
-  font-size: 75%;
-  background-color: #313132;
-  color: #fff;
-}
-
-#new-palette-btn:hover {
-  background-color: #DADAE2;
-}
-
-.generate-btn {
-  padding: 3px 5px;
-  margin: 0 auto;
-  display: block;
-  width: 25%;
-  border: none;
-  border-radius: 2px;
-  height: 25px;
-  font-size: 80%;
-  background-color: #313132;
-  color: #fff;
-}
-
-.generate-btn:hover {
-  background-color: #DADAE2;
 }
