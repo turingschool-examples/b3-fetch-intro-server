@@ -11,10 +11,6 @@ app.use(express.static(__dirname + '/public'));
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Palette Picker';
 
-app.locals.projects = [
-  { id: 'a1', project: 'Palette Picker'}
-];
-
 app.get('/', (request, response) => {
   response.send('You are in Palette Picker!');
 });
