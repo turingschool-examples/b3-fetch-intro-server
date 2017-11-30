@@ -43,6 +43,18 @@ const appendProject = (project, projectId) => {
       </ul>
     </aside>
   `);
+  addProjectToList(project.project_name);
+};
+
+const addProjectToList = (projectName) => {
+  console.log({projectName});
+  $('#project-menu').prepend(`
+    <option
+      value="${projectName}"
+      id="${projectName}" selected>
+      ${projectName}
+    </option>
+  `);
 };
 
 const fetchPalettes = (project) => {
