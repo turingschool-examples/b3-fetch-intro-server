@@ -26,8 +26,6 @@ const updateRandomColors = () => {
 };
 
 const generateColors = () => {
-  //call a helper to determine how many colors need to be generated
-  //generate that many colors
   const characters = '0123456789ABCDEF';
   let color = '#';
   for (let i = 0; i < 6; i++) {
