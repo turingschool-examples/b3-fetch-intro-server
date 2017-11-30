@@ -23,7 +23,6 @@ const generateColors = () => {
   return color;
 };
 
-//specify content type header
 const fetchProjects = () => {
   fetch('/api/v1/projects')
     .then(response => response.json())
@@ -47,6 +46,7 @@ const appendProject = (project, projectId) => {
 };
 
 const fetchPalettes = (project) => {
+  //how do i only call this on the projects with palettes? or
   fetch( `/api/v1/projects/${project.id}/palettes`)
     .then(response => response.json())
     .then(palettes => appendPalettes(palettes, project.id))
@@ -54,19 +54,23 @@ const fetchPalettes = (project) => {
 };
 
 const appendPalettes = (palette, projectId) => {
-  console.log({palette});
   $(`#project-${projectId}`).append(`
     <li>
       <p>${palette[0].palette_title}</p>
-      <div class="palette-color" style="background-color: ${palette[0].color_1}">
+      <div
+        class="palette-color" style="background-color: ${palette[0].color_1}">
       </div>
-      <div class="palette-color" style="background-color: ${palette[0].color_2}">
+      <div
+        class="palette-color" style="background-color: ${palette[0].color_2}">
       </div>
-      <div class="palette-color" style="background-color: ${palette[0].color_3}">
+      <div
+        class="palette-color" style="background-color: ${palette[0].color_3}">
       </div>
-      <div class="palette-color" style="background-color: ${palette[0].color_4}">
+      <div
+        class="palette-color" style="background-color: ${palette[0].color_4}">
       </div>
-      <div class="palette-color" style="background-color: ${palette[0].color_5}">
+      <div
+        class="palette-color" style="background-color: ${palette[0].color_5}">
       </div>
     </li>
   `);
@@ -80,14 +84,17 @@ const postProject = () => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name: newProjectName })
+    body: JSON.stringify({ project_name: newProjectName })
   })
     .then(response => {
       if (response.status === 201) {
         return response.json();
       }
     })
-    .then(projects => appendProject(projects[0]))
+    .then(projects => {
+      fetchProjects();
+      appendProject(projects[0]);
+    })
     .catch(error => console.log(error));
 
   $('#new-project').val('');
