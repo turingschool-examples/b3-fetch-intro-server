@@ -138,7 +138,7 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
       if (palette) {
         return response.sendStatus(204);
       } else {
-        return response.status(422).json({ error: 'Not Found'});
+        return response.status(422).json({ error: 'Not Found' });
       }
     })
     .catch(error => {
