@@ -23,23 +23,25 @@ const generateColors = () => {
   return color;
 };
 
+//specify content type header
 const fetchProjects = () => {
   fetch('/api/v1/projects')
     .then(response => response.json())
     .then(projects => {
       projects.forEach(project => {
-        appendProject(project);
+        appendProject(project, project.id);
         fetchPalettes(project);
       });
     })
     .catch(error => console.log(error))
 };
 
-const appendProject = (newProjectName) => {
+const appendProject = (project, projectId) => {
+  console.log({project});
   $('.project-directory').prepend(`
     <aside class="saved-project">
-      <h4 class=${newProjectName}>${newProjectName}</h4>
-      <ul class="project-list">
+      <h4 class=${project.project_name}>${project.project_name}</h4>
+      <ul class="project-list" id="project-${projectId}">
       </ul>
     </aside>
   `);
@@ -55,7 +57,7 @@ const fetchPalettes = (project) => {
 const appendPalettes = (palette, projectId) => {
   $(`#project-${projectId}`).append(`
     <li>
-      <p>Palette Name</p>
+      <p>${palette.palette_title}</p>
       <div class="palette-color" style="background-color: ${palette.color_1}">
       </div>
       <div class="palette-color" style="background-color: ${palette.color_2}">
@@ -85,7 +87,7 @@ const postProject = () => {
         return response.json();
       }
     })
-    .then(projects => addProject(projects[0]))
+    .then(projects => appendProject(projects[0]))
     .catch(error => console.log(error));
 
   $('#new-project').val('');

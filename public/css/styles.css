@@ -6,7 +6,7 @@
 }
 
 body {
-  background-image: url(../../assets/background2.png);
+  background-image: url(../assets/background2.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -70,7 +70,7 @@ body {
 }
 
 .empty-heart-icon {
-  background-image: url(../../assets/empty-heart.svg);
+  background-image: url(../assets/empty-heart.svg);
   background-size: contain;
   background-repeat: no-repeat;
   height: 25px;
@@ -79,7 +79,7 @@ body {
 }
 
 .full-heart-icon {
-  background-image: url(../../assets/full-heart.svg);
+  background-image: url(../assets/full-heart.svg);
   background-position: bottom;
   background-size: contain;
   background-repeat: no-repeat;
