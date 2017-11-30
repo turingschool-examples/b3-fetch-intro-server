@@ -37,7 +37,6 @@ const fetchProjects = () => {
 };
 
 const appendProject = (project, projectId) => {
-  console.log({project});
   $('.project-directory').prepend(`
     <aside class="saved-project">
       <h4 class=${project.project_name}>${project.project_name}</h4>
@@ -55,18 +54,19 @@ const fetchPalettes = (project) => {
 };
 
 const appendPalettes = (palette, projectId) => {
+  console.log({palette});
   $(`#project-${projectId}`).append(`
     <li>
-      <p>${palette.palette_title}</p>
-      <div class="palette-color" style="background-color: ${palette.color_1}">
+      <p>${palette[0].palette_title}</p>
+      <div class="palette-color" style="background-color: ${palette[0].color_1}">
       </div>
-      <div class="palette-color" style="background-color: ${palette.color_2}">
+      <div class="palette-color" style="background-color: ${palette[0].color_2}">
       </div>
-      <div class="palette-color" style="background-color: ${palette.color_3}">
+      <div class="palette-color" style="background-color: ${palette[0].color_3}">
       </div>
-      <div class="palette-color" style="background-color: ${palette.color_4}">
+      <div class="palette-color" style="background-color: ${palette[0].color_4}">
       </div>
-      <div class="palette-color" style="background-color: ${palette.color_5}">
+      <div class="palette-color" style="background-color: ${palette[0].color_5}">
       </div>
     </li>
   `);
