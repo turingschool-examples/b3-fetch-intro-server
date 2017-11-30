@@ -29,7 +29,7 @@ const fetchProjects = () => {
     .then(projects => {
       projects.forEach(project => {
         appendProject(project, project.id);
-        fetchPalettes(project);
+        fetchPalettes(project.id);
       });
     })
     .catch(error => console.log(error))
@@ -38,30 +38,28 @@ const fetchProjects = () => {
 const appendProject = (project, projectId) => {
   $('.project-directory').prepend(`
     <aside class="saved-project">
-      <h4 class=${project.project_name}>${project.project_name}</h4>
+      <h4 class=${projectId}>${project.project_name}</h4>
       <ul class="project-list" id="project-${projectId}">
       </ul>
     </aside>
   `);
-  addProjectToList(project.project_name);
+  addProjectToList(project.project_name, projectId);
 };
 
-const addProjectToList = (projectName) => {
-  console.log({projectName});
+const addProjectToList = (projectName, projectId) => {
   $('#project-menu').prepend(`
     <option
-      value="${projectName}"
+      value="${projectId}"
       id="${projectName}" selected>
       ${projectName}
     </option>
   `);
 };
 
-const fetchPalettes = (project) => {
-  //how do i only call this on the projects with palettes? or
-  fetch( `/api/v1/projects/${project.id}/palettes`)
+const fetchPalettes = (projectId) => {
+  fetch( `/api/v1/projects/${projectId}/palettes`)
     .then(response => response.json())
-    .then(palettes => appendPalettes(palettes, project.id))
+    .then(palettes => appendPalettes(palettes, projectId))
     .catch(error => console.log(error));
 };
 
@@ -70,19 +68,24 @@ const appendPalettes = (palette, projectId) => {
     <li>
       <p>${palette[0].palette_title}</p>
       <div
-        class="palette-color" style="background-color: ${palette[0].color_1}">
+        class="palette-color list-color-1"
+        style="background-color: ${palette[0].color_1}">
       </div>
       <div
-        class="palette-color" style="background-color: ${palette[0].color_2}">
+        class="palette-color list-color-2"
+        style="background-color: ${palette[0].color_2}">
       </div>
       <div
-        class="palette-color" style="background-color: ${palette[0].color_3}">
+        class="palette-color list-color-3"
+        style="background-color: ${palette[0].color_3}">
       </div>
       <div
-        class="palette-color" style="background-color: ${palette[0].color_4}">
+        class="palette-color list-color-4"
+        style="background-color: ${palette[0].color_4}">
       </div>
       <div
-        class="palette-color" style="background-color: ${palette[0].color_5}">
+        class="palette-color list-color-5"
+        style="background-color: ${palette[0].color_5}">
       </div>
     </li>
   `);
@@ -115,11 +118,12 @@ const postProject = () => {
 const postPalette = (event) => {
   event.preventDefault();
   const paletteTitle = $('#new-palette').val();
-  const color_1 = $('#list-color-1').text();
-  const color_2 = $('#list-color-2').text();
-  const color_3 = $('#list-color-3').text();
-  const color_4 = $('#list-color-4').text();
-  const color_5 = $('#list-color-5').text();
+  //how do i grab the hex codes from these?!?
+  const color_1 = rgb2hex($('.list-color-1').css('background-color'));
+  const color_2 = rgb2hex($('.list-color-2').css('background-color'));
+  const color_3 = rgb2hex($('.list-color-3').css('background-color'));
+  const color_4 = rgb2hex($('.list-color-4').css('background-color'));
+  const color_5 = rgb2hex($('.list-color-5').css('background-color'));
   const projectId = $('#project-menu option:selected').val();
 
   $('#new-palette').val('');
@@ -130,20 +134,33 @@ const postPalette = (event) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      name: paletteTitle,
-      project_id: projectId,
+      palette_title: paletteTitle,
       color_1,
       color_2,
       color_3,
       color_4,
       color_5,
+      project_id: projectId,
     })
   })
     .then(response => response.json())
     .then(newPalette => {
+      fetchPalettes(projectId);
       appendPalettes(newPalette, projectId);
     })
     .catch(error => console.log(error));
+};
+
+const rgb2hex = (rgb) => {
+  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+};
+
+const hex = (x) => {
+  const hexDigits = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
+  return isNaN(x)
+    ? "00"
+    : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
 };
 
 const toggleFavorite = (event) => {
