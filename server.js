@@ -1,11 +1,21 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 //const md5 = require('md5');
+const path = require('path');
 const app = express();
+
+const requireHTTPS = (request, response, next) => {
+  if (request.headers['x-forwarded-proto'] !== 'https') {
+    return response.redirect('https://' + request.get('host') + request.url);
+  }
+  next();
+};
+
+app.use(requireHTTPS);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname + '/public')));
 
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];

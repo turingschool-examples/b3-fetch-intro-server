@@ -1,18 +1,7 @@
 $(document).ready(() => {
   updateRandomColors();
+  fetchProjects();
 });
-
-const addProject = () => {
-  let newProjectName = $('#new-project').val();
-  $('.project-directory').prepend(`
-    <aside class="saved-project">
-      <h4 class=${newProjectName}>${newProjectName}</h4>
-      <ul class="project-list">
-      </ul>
-    </aside>
-  `);
-  $('#new-project').val('');
-};
 
 const updateRandomColors = () => {
   for (var i = 0; i < 6; i++) {
@@ -34,27 +23,114 @@ const generateColors = () => {
   return color;
 };
 
-const toggleFavorite = () => {
-  //let newFavorite =
-  //grab hex code of the color that was clicked on
+const fetchProjects = () => {
+  fetch('/api/v1/projects')
+    .then(response => response.json())
+    .then(projects => {
+      projects.forEach(project => {
+        appendProject(project);
+        fetchPalettes(project);
+      });
+    })
+    .catch(error => console.log(error))
 };
 
-const savePalette = () => {
-  let project = $('#project-menu').find(':selected').text();
-  let paletteName = $('#new-palette').val();
-  //need to grab the HEX codes tha belong with this palette
-  //append the name and baby-palette to the UL
-  //need to interact with BE here - send this palette to DB
+const appendProject = (newProjectName) => {
+  $('.project-directory').prepend(`
+    <aside class="saved-project">
+      <h4 class=${newProjectName}>${newProjectName}</h4>
+      <ul class="project-list">
+      </ul>
+    </aside>
+  `);
+};
+
+const fetchPalettes = (project) => {
+  fetch( `/api/v1/projects/${project.id}/palettes`)
+    .then(response => response.json())
+    .then(palettes => appendPalettes(palettes, project.id))
+    .catch(error => console.log(error));
+};
+
+const appendPalettes = (palette, projectId) => {
+  $(`#project-${projectId}`).append(`
+    <li>
+      <p>Palette Name</p>
+      <div class="palette-color" style="background-color: ${palette.color_1}">
+      </div>
+      <div class="palette-color" style="background-color: ${palette.color_2}">
+      </div>
+      <div class="palette-color" style="background-color: ${palette.color_3}">
+      </div>
+      <div class="palette-color" style="background-color: ${palette.color_4}">
+      </div>
+      <div class="palette-color" style="background-color: ${palette.color_5}">
+      </div>
+    </li>
+  `);
+};
+
+const postProject = () => {
+  let newProjectName = $('#new-project').val();
+
+  fetch('/api/v1/projects', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name: newProjectName })
+  })
+    .then(response => {
+      if (response.status === 201) {
+        return response.json();
+      }
+    })
+    .then(projects => addProject(projects[0]))
+    .catch(error => console.log(error));
+
+  $('#new-project').val('');
+};
+
+const postPalette = (event) => {
+  event.preventDefault();
+  const paletteTitle = $('#new-palette').val();
+  const color_1 = $('#list-color-1').text();
+  const color_2 = $('#list-color-2').text();
+  const color_3 = $('#list-color-3').text();
+  const color_4 = $('#list-color-4').text();
+  const color_5 = $('#list-color-5').text();
+  const projectId = $('#project-menu option:selected').val();
+
   $('#new-palette').val('');
+
+  fetch(`/api/v1/projects/${projectId}/palettes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      name: paletteTitle,
+      project_id: projectId,
+      color_1,
+      color_2,
+      color_3,
+      color_4,
+      color_5,
+    })
+  })
+    .then(response => response.json())
+    .then(newPalette => {
+      appendPalettes(newPalette, projectId);
+    })
+    .catch(error => console.log(error));
 };
 
-$('#new-project-btn').on('click', addProject);
-$('.generate-btn').on('click', updateRandomColors);
-$('#new-palette-btn').on('click', savePalette);
-$('.empty-heart-icon').on('click', toggleFavorite);
-$('.full-heart-icon').on('click', toggleFavorite);
-
-$('.empty-heart-icon').on('click', (event) => {
+const toggleFavorite = (event) => {
   $(event.target).toggleClass('full-heart-icon');
   $(event.target).parents('.color').toggleClass('favorited');
-});
+};
+
+$('#new-project-btn').on('click', postProject);
+$('.generate-btn').on('click', updateRandomColors);
+$('#new-palette-btn').on('click', postPalette);
+$('.icon').on('click', toggleFavorite);
