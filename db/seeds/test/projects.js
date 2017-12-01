@@ -4,8 +4,9 @@ exports.seed = function(knex, Promise) {
     .then(() => {
       return Promise.all([
         knex('projects').insert({
-          project_name: 'project1'
-        }, 'id')
+          project_name: 'project1',
+          id: 1
+        })
           .then(project => {
             return knex('palettes').insert([
               { palette_title: 'Cool Sunset',
