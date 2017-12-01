@@ -113,10 +113,12 @@ const postProject = () => {
       }
     })
     .then(projects => {
+      $('.project-directory').html('');
       fetchProjects();
       appendProject(projects[0]);
     })
     .catch(error => console.log(error));
+
 
   $('#new-project').val('');
 };
@@ -150,6 +152,7 @@ const postPalette = (event) => {
   })
     .then(response => response.json())
     .then(newPalette => {
+      $(`#project-${projectId}`).html('');
       fetchPalettes(projectId);
       appendPalettes(newPalette, projectId);
     })
