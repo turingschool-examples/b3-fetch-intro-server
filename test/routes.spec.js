@@ -81,7 +81,7 @@ describe('API Routes', () => {
 
   describe('GET /api/v1/palettes/:id', () => {
 
-    it.skip('should retrieve all palettes', (done) => {
+    it.only('should retrieve all palettes', (done) => {
       chai.request(server)
         .get('/api/v1/palettes/1')
         .end((error, response) => {
@@ -91,8 +91,7 @@ describe('API Routes', () => {
           response.body.length.should.equal(1);
           response.body[0].should.have.property('id');
           response.body[0].id.should.equal(1);
-          response.body[0].should.have.property('name');
-          response.body[0].project_name.should.equal('Cool Sunset');
+          response.body[0].palette_title.should.equal('Cool Sunset');
           response.body[0].should.have.property('color_1');
           response.body[0].color_1.should.equal('#01084f');
           response.body[0].should.have.property('color_2');
