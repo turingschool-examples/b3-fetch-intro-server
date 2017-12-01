@@ -66,26 +66,28 @@ const fetchPalettes = (projectId) => {
 const appendPalettes = (palette, projectId) => {
   $(`#project-${projectId}`).append(`
     <li>
-      <p>${palette[0].palette_title}</p>
-      <div
-        class="palette-color list-color-1"
-        style="background-color: ${palette[0].color_1}">
-      </div>
-      <div
-        class="palette-color list-color-2"
-        style="background-color: ${palette[0].color_2}">
-      </div>
-      <div
-        class="palette-color list-color-3"
-        style="background-color: ${palette[0].color_3}">
-      </div>
-      <div
-        class="palette-color list-color-4"
-        style="background-color: ${palette[0].color_4}">
-      </div>
-      <div
-        class="palette-color list-color-5"
-        style="background-color: ${palette[0].color_5}">
+      <p class="small-palette-name">${palette[0].palette_title}</p>
+      <div class="small-palette">
+        <div
+          class="palette-color list-color-1"
+          style="background-color: ${palette[0].color_1}">
+        </div>
+        <div
+          class="palette-color list-color-2"
+          style="background-color: ${palette[0].color_2}">
+        </div>
+        <div
+          class="palette-color list-color-3"
+          style="background-color: ${palette[0].color_3}">
+        </div>
+        <div
+          class="palette-color list-color-4"
+          style="background-color: ${palette[0].color_4}">
+        </div>
+        <div
+          class="palette-color list-color-5"
+          style="background-color: ${palette[0].color_5}">
+        </div>
       </div>
     </li>
   `);
@@ -118,7 +120,6 @@ const postProject = () => {
 const postPalette = (event) => {
   event.preventDefault();
   const paletteTitle = $('#new-palette').val();
-  //how do i grab the hex codes from these?!?
   const color_1 = rgb2hex($('.list-color-1').css('background-color'));
   const color_2 = rgb2hex($('.list-color-2').css('background-color'));
   const color_3 = rgb2hex($('.list-color-3').css('background-color'));

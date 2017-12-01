@@ -232,4 +232,23 @@ body {
 
 li {
   padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+}
+
+.small-palette-name {
+  margin-right: 10px;
+}
+
+.small-palette {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.palette-color {
+  height: 20px;
+  width: 20px;
 }
