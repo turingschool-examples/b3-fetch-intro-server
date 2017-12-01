@@ -183,7 +183,25 @@ const deleteSmallPalette = (event) => {
     });
 };
 
-$('#new-project-btn').on('click', postProject);
+const checkDuplicateName = () => {
+  const projectName = $('#new-project').val();
+
+  fetch(`/api/v1/projects/`)
+    .then(response => response.json())
+    .then(projects => {
+      const match = projects.find(project => {
+        return projectName === project.name;
+      });
+      if (!match) {
+        postProject(projectName);
+      } else {
+        alert(`${projectName} already exists -
+              please enter a unique project name!`);
+      }
+    });
+};
+
+$('#new-project-btn').on('click', checkDuplicateName);
 $('.generate-btn').on('click', updateRandomColors);
 $('#new-palette-btn').on('click', postPalette);
 $('.icon').on('click', toggleFavorite);
