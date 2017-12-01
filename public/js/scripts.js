@@ -32,7 +32,9 @@ const fetchProjects = () => {
         fetchPalettes(project.id);
       });
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      throw error;
+    });
 };
 
 const appendProject = (project, projectId) => {
@@ -50,7 +52,7 @@ const addProjectToList = (projectName, projectId) => {
   $('#project-menu').prepend(`
     <option
       value="${projectId}"
-      id="${projectName}" selected>
+      id="${projectName}">
       ${projectName}
     </option>
   `);
@@ -60,7 +62,9 @@ const fetchPalettes = (projectId) => {
   fetch( `/api/v1/projects/${projectId}/palettes`)
     .then(response => response.json())
     .then(palettes => appendPalettes(palettes, projectId))
-    .catch(error => console.log(error));
+    .catch(error => {
+      throw error;
+    });
 };
 
 const appendPalettes = (palettes, projectId) => {
@@ -116,7 +120,9 @@ const postProject = () => {
       fetchProjects();
       appendProject(projects[0]);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      throw error;
+    });
 
   $('#new-project').val('');
 };
@@ -154,7 +160,9 @@ const postPalette = (event) => {
       fetchPalettes(projectId);
       appendPalettes(newPalette, projectId);
     })
-    .catch(error => console.log(error));
+    .catch(error => {
+      throw error;
+    });
 };
 
 const toggleFavorite = (event) => {
@@ -170,7 +178,9 @@ const deleteSmallPalette = (event) => {
   fetch(`/api/v1/palettes/${id}`, {
     method: 'DELETE',
   })
-    .catch(error => console.log(error));
+    .catch(error => {
+      throw error;
+    });
 };
 
 $('#new-project-btn').on('click', postProject);

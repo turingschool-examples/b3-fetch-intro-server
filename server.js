@@ -1,6 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-//const md5 = require('md5');
 const path = require('path');
 const environment = process.env.NODE_ENV || 'development';
 const configuration = require('./knexfile')[environment];
@@ -9,7 +8,6 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-//this is whats grabbing and serving up static assets from html
 app.use(express.static(path.join(__dirname + '/public')));
 
 app.set('port', process.env.PORT || 3000);
