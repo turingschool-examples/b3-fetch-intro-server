@@ -16,7 +16,7 @@ exports.seed = function(knex, Promise) {
                 color_3: '#631e50',
                 color_4: '#a73c5a',
                 color_5: '#ff7954',
-                project_id: project[0] },
+                project_id: 1 },
               { palette_title: 'Summer Ice',
                 id: 2,
                 color_1: '#f4a644',
@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
                 color_3: '#f47b52',
                 color_4: '#f25e5e',
                 color_5: '#f64863',
-                project_id: project[0] },
+                project_id: 1 },
             ]);
           })
           .then(() => console.log('seeding complete!'))

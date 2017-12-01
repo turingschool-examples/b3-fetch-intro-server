@@ -81,7 +81,7 @@ describe('API Routes', () => {
 
   describe('GET /api/v1/palettes/:id', () => {
 
-    it.only('should retrieve all palettes', (done) => {
+    it('should retrieve all palettes', (done) => {
       chai.request(server)
         .get('/api/v1/palettes/1')
         .end((error, response) => {
@@ -203,7 +203,7 @@ describe('API Routes', () => {
 
   describe('POST /api/v1/projects/:id/palettes', () => {
 
-    it.only('should be able to add a project to database', (done) => {
+    it('should be able to add a project to database', (done) => {
       chai.request(server)
         .post('/api/v1/projects/1/palettes')
         .send({
@@ -229,7 +229,7 @@ describe('API Routes', () => {
         });
     });
 
-    it.only('should not create a project with missing data', (done) => {
+    it('should not create a project with missing data', (done) => {
       chai.request(server)
         .post('/api/v1/projects')
         .send({
@@ -244,7 +244,6 @@ describe('API Routes', () => {
   });
 
   describe('DELETE /api/v1/palettes/:id', () => {
-
     it('should delete a palette from database', (done) => {
       chai.request(server)
         .delete('/api/v1/palettes/1')
