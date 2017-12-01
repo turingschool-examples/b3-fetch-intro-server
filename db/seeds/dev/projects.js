@@ -22,7 +22,7 @@ exports.seed = function(knex, Promise) {
                 color_4: '#f25e5e',
                 color_5: '#f64863',
                 project_id: project[0] },
-            ]); 
+            ]);
           })
           .then(() => console.log('seeding complete!'))
           .catch(error => console.log({ error }))
