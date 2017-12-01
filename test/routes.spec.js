@@ -119,8 +119,6 @@ describe('API Routes', () => {
 
   });
 
-  //GET PROJECT/:ID
-
   describe('GET /api/v1/projects/:id/palettes', () => {
     it('should return all palettes for a specific project', (done) => {
       chai.request(server)

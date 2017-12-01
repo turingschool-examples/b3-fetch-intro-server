@@ -48,25 +48,6 @@ app.get('/api/v1/palettes/:id', (request, response) => {
     });
 });
 
-app.get('/api/v1/projects/:id', (request, response) => {
-  const { id } = request.params;
-
-  database('projects').where('id', id).select()
-    .then(project => {
-      if (project.length) {
-        return response.status(200).json(project);
-      } else {
-        //return response.status(200).json([]);???
-        return response.status(404).json({
-          error: `Could not find project with id of ${id}.`
-        });
-      }
-    })
-    .catch(error => {
-      return response.status(500).json({ error });
-    });
-});
-
 app.get('/api/v1/projects/:id/palettes', (request, response) => {
   const projectId = request.params.id;
 
