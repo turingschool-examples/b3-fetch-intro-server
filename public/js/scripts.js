@@ -68,6 +68,7 @@ const fetchPalettes = (projectId) => {
 };
 
 const appendPalettes = (palettes, projectId) => {
+  console.log(palettes);
   return palettes.forEach((palette) => {
     /*eslint-disable max-len*/
     $(`#project-${projectId}`).append(`
@@ -193,9 +194,7 @@ const checkDuplicateName = () => {
   fetch(`/api/v1/projects/`)
     .then(response => response.json())
     .then(projects => {
-      const match = projects.find(project => {
-        return projectName === project.name;
-      });
+      const match = projects.find(project => projectName === project.name);
       if (!match) {
         postProject(projectName);
       } else {
