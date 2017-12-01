@@ -27,25 +27,6 @@ app.get('/api/v1/projects', (request, response) => {
     });
 });
 
-app.get('/api/v1/palettes/:id', (request, response) => {
-  const { id } = request.params;
-
-  database('palettes').where('id', id).select()
-    .then(palette => {
-      if (palette.length) {
-        return response.status(200).json(palette);
-      } else {
-        //return response.status(200).json([]);???
-        return response.status(404).json({
-          error: `Could not find palette with id of ${id}.`
-        });
-      }
-    })
-    .catch(error => {
-      return response.status(500).json({ error });
-    });
-});
-
 app.get('/api/v1/projects/:id/palettes', (request, response) => {
   const projectId = request.params.id;
 
@@ -55,10 +36,6 @@ app.get('/api/v1/projects/:id/palettes', (request, response) => {
         return response.status(200).json(palettes);
       } else {
         return response.status(200).json([]);
-        // return response.status(404).json({
-        //   error:
-        //   `Could not find any palletes with for project id: ${projectId}.`
-        // });
       }
     })
     .catch(error => {
@@ -135,6 +112,7 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
 });
 
 app.listen(app.get('port'), () => {
+  /*eslint-disable no-console*/
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
 
