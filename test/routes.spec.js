@@ -79,45 +79,6 @@ describe('API Routes', () => {
     });
   });
 
-  describe('GET /api/v1/palettes/:id', () => {
-
-    it('should retrieve all palettes', (done) => {
-      chai.request(server)
-        .get('/api/v1/palettes/1')
-        .end((error, response) => {
-          response.should.have.status(200);
-          response.should.be.json;
-          response.body.should.be.a('array');
-          response.body.length.should.equal(1);
-          response.body[0].should.have.property('id');
-          response.body[0].id.should.equal(1);
-          response.body[0].palette_title.should.equal('Cool Sunset');
-          response.body[0].should.have.property('color_1');
-          response.body[0].color_1.should.equal('#01084f');
-          response.body[0].should.have.property('color_2');
-          response.body[0].color_2.should.equal('#391954');
-          response.body[0].should.have.property('color_3');
-          response.body[0].color_3.should.equal('#631e50');
-          response.body[0].should.have.property('color_4');
-          response.body[0].color_4.should.equal('#a73c5a');
-          response.body[0].should.have.property('color_5');
-          response.body[0].color_5.should.equal('#ff7954');
-          response.body[0].should.have.property('project_id');
-          done();
-        });
-    });
-
-    it('should return a 404 if the path is incorrect', (done) => {
-      chai.request(server)
-        .get('/api/v1/hello')
-        .end((error, response) => {
-          response.should.have.status(404);
-          done();
-        });
-    });
-
-  });
-
   describe('GET /api/v1/projects/:id/palettes', () => {
     it('should return all palettes for a specific project', (done) => {
       chai.request(server)
@@ -264,4 +225,5 @@ describe('API Routes', () => {
     });
 
   });
+  
 });

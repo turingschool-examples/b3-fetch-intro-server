@@ -69,6 +69,7 @@ const fetchPalettes = (projectId) => {
 
 const appendPalettes = (palettes, projectId) => {
   return palettes.forEach((palette) => {
+    /*eslint-disable max-len*/
     $(`#project-${projectId}`).append(`
       <li
         id="${palette.id}"
