@@ -70,7 +70,10 @@ const fetchPalettes = (projectId) => {
 const appendPalettes = (palettes, projectId) => {
   return palettes.forEach((palette) => {
     $(`#project-${projectId}`).append(`
-      <li id="${palette.id}">
+      <li
+        id="${palette.id}"
+        class="small-pallete-data"
+        data-colors='${JSON.stringify([palette.color_1, palette.color_2, palette.color_3, palette.color_4, palette.color_5] )}'>
         <p class="small-palette-name">${palette.palette_title}</p>
         <div class="small-palette">
           <div
@@ -201,6 +204,18 @@ const checkDuplicateName = () => {
     });
 };
 
+const generateSavedPalette = (event) => {
+  event.preventDefault();
+  const palette = $(event.target).closest('.small-pallete-data');
+  const colors = JSON.parse(palette.attr('data-colors'));
+
+  return colors.forEach((color, i) => {
+    $(`.color${i + 1}`).css('background-color', color);
+    $(`.hex-code${i + 1}`).text(color);
+  });
+};
+
+$('.project-directory').on('click', '.small-palette', generateSavedPalette);
 $('#new-project-btn').on('click', checkDuplicateName);
 $('.generate-btn').on('click', updateRandomColors);
 $('#new-palette-btn').on('click', postPalette);
