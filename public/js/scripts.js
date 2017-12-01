@@ -68,7 +68,6 @@ const fetchPalettes = (projectId) => {
 };
 
 const appendPalettes = (palettes, projectId) => {
-  console.log(palettes);
   return palettes.forEach((palette) => {
     /*eslint-disable max-len*/
     $(`#project-${projectId}`).append(`
@@ -105,25 +104,29 @@ const appendPalettes = (palettes, projectId) => {
   });
 };
 
-const postProject = () => {
-  let newProjectName = $('#new-project').val();
-
-  fetch('/api/v1/projects', {
+const postPayload = (body) => {
+  return {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ project_name: newProjectName })
-  })
+    body: JSON.stringify(body)
+  };
+};
+
+const postProject = () => {
+  let newProjectName = $('#new-project').val();
+
+  fetch('/api/v1/projects', postPayload({ project_name: newProjectName }))
     .then(response => {
       if (response.status === 201) {
         return response.json();
       }
     })
-    .then(projects => {
+    .then(() => {
       $('.project-directory').html('');
+      $('#project-menu').html(`<option selected>Select a Project</option>`);
       fetchProjects();
-      appendProject(projects[0]);
     })
     .catch(error => {
       throw error;
@@ -132,7 +135,7 @@ const postProject = () => {
   $('#new-project').val('');
 };
 
-const postPalette = (event) => {
+const grabPalette = (event) => {
   event.preventDefault();
   const paletteTitle = $('#new-palette').val();
   const color_1 = $('.hex-code1').text();
@@ -144,26 +147,26 @@ const postPalette = (event) => {
 
   $('#new-palette').val('');
 
-  fetch(`/api/v1/projects/${projectId}/palettes`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      palette_title: paletteTitle,
-      color_1,
-      color_2,
-      color_3,
-      color_4,
-      color_5,
-      project_id: projectId,
-    })
-  })
+  const body = {
+    palette_title: paletteTitle,
+    color_1,
+    color_2,
+    color_3,
+    color_4,
+    color_5,
+    project_id: projectId,
+  };
+
+  postPalette(body);
+};
+
+const postPalette = (body) => {
+  fetch(`/api/v1/projects/${body.project_id}/palettes`, postPayload(body))
     .then(response => response.json())
     .then(newPalette => {
-      $(`#project-${projectId}`).html('');
-      fetchPalettes(projectId);
-      appendPalettes(newPalette, projectId);
+      $(`#project-${body.project_id}`).html('');
+      fetchPalettes(body.project_id);
+      appendPalettes(newPalette, body.project_id);
     })
     .catch(error => {
       throw error;
@@ -218,6 +221,6 @@ const generateSavedPalette = (event) => {
 $('.project-directory').on('click', '.small-palette', generateSavedPalette);
 $('#new-project-btn').on('click', checkDuplicateName);
 $('.generate-btn').on('click', updateRandomColors);
-$('#new-palette-btn').on('click', postPalette);
+$('#new-palette-btn').on('click', grabPalette);
 $('.icon').on('click', toggleFavorite);
 $('.project-directory').on('click', '.delete-icon', deleteSmallPalette);

@@ -1,3 +1,4 @@
+/*eslint-disable no-console*/
 exports.seed = function(knex, Promise) {
   return knex('palettes').del()
     .then(() => knex('projects').del())
@@ -26,7 +27,7 @@ exports.seed = function(knex, Promise) {
           })
           .then(() => console.log('seeding complete!'))
           .catch(error => console.log({ error }))
-      ]); //end of Promise.all
-    }) //end of then()
+      ]);
+    }) 
     .catch(error => console.log({ error }));
 };
