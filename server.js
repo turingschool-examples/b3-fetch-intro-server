@@ -54,10 +54,11 @@ app.get('/api/v1/projects/:id/palettes', (request, response) => {
       if (palettes.length) {
         return response.status(200).json(palettes);
       } else {
-        return response.status(404).json({
-          error:
-          `Could not find any palletes with for project id: ${projectId}.`
-        });
+        return response.status(200).json([]);
+        // return response.status(404).json({
+        //   error:
+        //   `Could not find any palletes with for project id: ${projectId}.`
+        // });
       }
     })
     .catch(error => {
