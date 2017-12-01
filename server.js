@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Palette Picker';
 
+app.get('/', (request, response) => {
+  response.send('Welcome to Palette Picker!');
+});
+
 app.get('/api/v1/projects', (request, response) => {
   database('projects').select()
     .then(projects => {
@@ -151,3 +155,5 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
+
+module.exports = app;
