@@ -1,3 +1,4 @@
+/*eslint-disable no-console*/
 exports.seed = function(knex, Promise) {
   return knex('palettes').del()
     .then(() => knex('projects').del())
@@ -7,7 +8,7 @@ exports.seed = function(knex, Promise) {
           project_name: 'project1',
           id: 1
         })
-          .then(project => {
+          .then(() => {
             return knex('palettes').insert([
               { palette_title: 'Cool Sunset',
                 id: 1,

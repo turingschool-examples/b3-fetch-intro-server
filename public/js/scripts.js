@@ -123,10 +123,9 @@ const postProject = () => {
         return response.json();
       }
     })
-    .then(projects => {
+    .then(() => {
       $('.project-directory').html('');
       fetchProjects();
-      appendProject(projects[0]);
     })
     .catch(error => {
       throw error;
