@@ -36,7 +36,6 @@ const fetchProjects = () => {
 };
 
 const appendProject = (project, projectId) => {
-//  $('.project-directory').html('');
   $('.project-directory').prepend(`
     <aside class="saved-project">
       <h4 class=${projectId}>${project.project_name}</h4>
@@ -65,7 +64,7 @@ const fetchPalettes = (projectId) => {
 };
 
 const appendPalettes = (palettes, projectId) => {
-  return palettes.forEach((palette, i) => {
+  return palettes.forEach((palette) => {
     $(`#project-${projectId}`).append(`
       <li>
         <p class="small-palette-name">${palette.palette_title}</p>
@@ -126,11 +125,11 @@ const postProject = () => {
 const postPalette = (event) => {
   event.preventDefault();
   const paletteTitle = $('#new-palette').val();
-  const color_1 = rgb2hex($('.list-color-1').css('background-color'));
-  const color_2 = rgb2hex($('.list-color-2').css('background-color'));
-  const color_3 = rgb2hex($('.list-color-3').css('background-color'));
-  const color_4 = rgb2hex($('.list-color-4').css('background-color'));
-  const color_5 = rgb2hex($('.list-color-5').css('background-color'));
+  const color_1 = $('.hex-code1').text();
+  const color_2 = $('.hex-code2').text();
+  const color_3 = $('.hex-code3').text();
+  const color_4 = $('.hex-code4').text();
+  const color_5 = $('.hex-code5').text();
   const projectId = $('#project-menu option:selected').val();
 
   $('#new-palette').val('');
@@ -159,17 +158,21 @@ const postPalette = (event) => {
     .catch(error => console.log(error));
 };
 
-const rgb2hex = (rgb) => {
-  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-  return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-};
-
-const hex = (x) => {
-  const hexDigits = new Array("0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "a", "b", "c", "d", "e", "f");
-  return isNaN(x)
-    ? "00"
-    : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
-};
+// const rgb2hex = (rgb) => {
+//   rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+//   return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+// };
+//
+// const hex = (x) => {
+//   const hexDigits =
+//     new Array(
+//       "0", "1", "2", "3", "4", "5", "6", "7",
+//       "8", "9", "a", "b", "c", "d", "e", "f"
+//     );
+//   return isNaN(x)
+//     ? "00"
+//     : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
+// };
 
 const toggleFavorite = (event) => {
   $(event.target).toggleClass('full-heart-icon');
