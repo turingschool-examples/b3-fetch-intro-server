@@ -66,7 +66,7 @@ const fetchPalettes = (projectId) => {
 const appendPalettes = (palettes, projectId) => {
   return palettes.forEach((palette) => {
     $(`#project-${projectId}`).append(`
-      <li>
+      <li id="${palette.id}">
         <p class="small-palette-name">${palette.palette_title}</p>
         <div class="small-palette">
           <div
@@ -118,7 +118,6 @@ const postProject = () => {
     })
     .catch(error => console.log(error));
 
-
   $('#new-project').val('');
 };
 
@@ -158,33 +157,24 @@ const postPalette = (event) => {
     .catch(error => console.log(error));
 };
 
-// const rgb2hex = (rgb) => {
-//   rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
-//   return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-// };
-//
-// const hex = (x) => {
-//   const hexDigits =
-//     new Array(
-//       "0", "1", "2", "3", "4", "5", "6", "7",
-//       "8", "9", "a", "b", "c", "d", "e", "f"
-//     );
-//   return isNaN(x)
-//     ? "00"
-//     : hexDigits[(x - x % 16) / 16] + hexDigits[x % 16];
-// };
-
 const toggleFavorite = (event) => {
   $(event.target).toggleClass('full-heart-icon');
   $(event.target).parents('.color').toggleClass('favorited');
 };
 
 const deleteSmallPalette = (event) => {
-  console.log({event});
+  event.preventDefault();
+  const id = $(event.target).closest('li').attr('id');
+  $(event.target).closest('li').remove();
+
+  fetch(`/api/v1/palettes/${id}`, {
+    method: 'DELETE',
+  })
+    .catch(error => console.log(error));
 };
 
 $('#new-project-btn').on('click', postProject);
 $('.generate-btn').on('click', updateRandomColors);
 $('#new-palette-btn').on('click', postPalette);
 $('.icon').on('click', toggleFavorite);
-$('.delete-icon').on('click', deleteSmallPalette);
+$('.project-directory').on('click', '.delete-icon', deleteSmallPalette);
