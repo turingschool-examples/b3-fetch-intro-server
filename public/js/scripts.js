@@ -125,6 +125,7 @@ const postProject = () => {
     })
     .then(() => {
       $('.project-directory').html('');
+      $('#project-menu').html(`<option selected>Select a Project</option>`);
       fetchProjects();
     })
     .catch(error => {
