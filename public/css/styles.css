@@ -13,13 +13,13 @@ body {
 
 .title {
   font-size: 220%;
-  padding: 15px 0 0 20px;
+  padding: 15px 0 0 75px;
   text-transform: uppercase;
-  color: #fff;
+  color: #313132;
 }
 
 .main-body {
-  background-color: rgba(10, 10, 10, 0.25);
+  background-color: rgba(255, 255, 255, 0.5);
   position: relative;
   z-index: 1;
 }
@@ -33,8 +33,9 @@ body {
 }
 
 .main-left {
-  width: 45%;
+  width: 50%;
   top: 90px;
+  left: 75px;
   position: absolute;
   z-index: 3;
   box-shadow: 5px 5px 20px 0px #66666A;
@@ -164,7 +165,7 @@ body {
 
 .projects {
   top: 0;
-  left: 45%;
+  left: 47.5%;
   width: 45%;
   height: 100vh;
   background-color: #fff;
@@ -175,6 +176,7 @@ body {
   display: flex;
   flex-direction: column;
   box-shadow: 5px 5px 20px 0px #66666A;
+  padding-top: 20px;
 }
 
 .projects-form {
@@ -183,6 +185,7 @@ body {
 
 .projects-subtitle {
   padding: 24px 0 12px 0;
+  font-size: 150%;
 }
 
 #new-project {
@@ -219,7 +222,7 @@ body {
 .project-directory {
   width: 90%;
   margin-top: 30px;
-  padding-left: 35%;
+  padding-left: 27.5%;
 }
 
 .saved-project {
