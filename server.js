@@ -1,15 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 //const md5 = require('md5');
+const path = require('path');
+const environment = process.env.NODE_ENV || 'development';
+const configuration = require('./knexfile')[environment];
+const database = require('knex')(configuration);
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + '/public'));
-
-const environment = process.env.NODE_ENV || 'development';
-const configuration = require('./knexfile')[environment];
-const database = require('knex')(configuration);
+//this is whats grabbing and serving up static assets from html
+app.use(express.static(path.join(__dirname + '/public')));
 
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Palette Picker';
