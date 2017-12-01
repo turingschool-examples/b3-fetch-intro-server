@@ -15,6 +15,10 @@ app.use(express.static(path.join(__dirname + '/public')));
 app.set('port', process.env.PORT || 3000);
 app.locals.title = 'Palette Picker';
 
+app.get('/', (request, response) => {
+  response.send('Welcome to Palette Picker!');
+});
+
 app.get('/api/v1/projects', (request, response) => {
   database('projects').select()
     .then(projects => {
@@ -33,26 +37,9 @@ app.get('/api/v1/palettes/:id', (request, response) => {
       if (palette.length) {
         return response.status(200).json(palette);
       } else {
+        //return response.status(200).json([]);???
         return response.status(404).json({
           error: `Could not find palette with id of ${id}.`
-        });
-      }
-    })
-    .catch(error => {
-      return response.status(500).json({ error });
-    });
-});
-
-app.get('/api/v1/projects/:id', (request, response) => {
-  const { id } = request.params;
-
-  database('projects').where('id', id).select()
-    .then(project => {
-      if (project.length) {
-        return response.status(200).json(project);
-      } else {
-        return response.status(404).json({
-          error: `Could not find project with id of ${id}.`
         });
       }
     })
@@ -151,3 +138,5 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
 app.listen(app.get('port'), () => {
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
 });
+
+module.exports = app;

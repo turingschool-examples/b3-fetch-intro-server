@@ -235,7 +235,7 @@ li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 80%;
+  width: 90%;
 }
 
 .small-palette-name {
@@ -245,10 +245,18 @@ li {
 .small-palette {
   display: flex;
   flex-direction: row;
-
 }
 
 .palette-color {
   height: 20px;
   width: 20px;
+}
+
+.delete-icon {
+  background-image: url(../assets/delete-icon.svg);
+  margin-top: 5px;
+  height: 10px;
+  width: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
