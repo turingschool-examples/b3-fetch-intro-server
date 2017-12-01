@@ -63,34 +63,37 @@ const fetchPalettes = (projectId) => {
     .catch(error => console.log(error));
 };
 
-const appendPalettes = (palette, projectId) => {
-  $(`#project-${projectId}`).append(`
-    <li>
-      <p class="small-palette-name">${palette[0].palette_title}</p>
-      <div class="small-palette">
-        <div
-          class="palette-color list-color-1"
-          style="background-color: ${palette[0].color_1}">
+const appendPalettes = (palettes, projectId) => {
+  return palettes.forEach((palette, i) => {
+    $(`#project-${projectId}`).append(`
+      <li>
+        <p class="small-palette-name">${palette.palette_title}</p>
+        <div class="small-palette">
+          <div
+            class="palette-color list-color-1"
+            style="background-color: ${palette.color_1}">
+          </div>
+          <div
+            class="palette-color list-color-2"
+            style="background-color: ${palette.color_2}">
+          </div>
+          <div
+            class="palette-color list-color-3"
+            style="background-color: ${palette.color_3}">
+          </div>
+          <div
+            class="palette-color list-color-4"
+            style="background-color: ${palette.color_4}">
+          </div>
+          <div
+            class="palette-color list-color-5"
+            style="background-color: ${palette.color_5}">
+          </div>
         </div>
-        <div
-          class="palette-color list-color-2"
-          style="background-color: ${palette[0].color_2}">
-        </div>
-        <div
-          class="palette-color list-color-3"
-          style="background-color: ${palette[0].color_3}">
-        </div>
-        <div
-          class="palette-color list-color-4"
-          style="background-color: ${palette[0].color_4}">
-        </div>
-        <div
-          class="palette-color list-color-5"
-          style="background-color: ${palette[0].color_5}">
-        </div>
-      </div>
-    </li>
-  `);
+        <div class="delete-icon"></div>
+      </li>
+      `);
+  });
 };
 
 const postProject = () => {
@@ -169,7 +172,12 @@ const toggleFavorite = (event) => {
   $(event.target).parents('.color').toggleClass('favorited');
 };
 
+const deleteSmallPalette = (event) => {
+  console.log({event});
+};
+
 $('#new-project-btn').on('click', postProject);
 $('.generate-btn').on('click', updateRandomColors);
 $('#new-palette-btn').on('click', postPalette);
 $('.icon').on('click', toggleFavorite);
+$('.delete-icon').on('click', deleteSmallPalette);
