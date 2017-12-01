@@ -37,6 +37,7 @@ app.get('/api/v1/palettes/:id', (request, response) => {
       if (palette.length) {
         return response.status(200).json(palette);
       } else {
+        //return response.status(200).json([]);???
         return response.status(404).json({
           error: `Could not find palette with id of ${id}.`
         });
@@ -55,6 +56,7 @@ app.get('/api/v1/projects/:id', (request, response) => {
       if (project.length) {
         return response.status(200).json(project);
       } else {
+        //return response.status(200).json([]);???
         return response.status(404).json({
           error: `Could not find project with id of ${id}.`
         });

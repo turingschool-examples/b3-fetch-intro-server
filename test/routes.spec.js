@@ -1,11 +1,10 @@
-// const environment = process.env.NODE_ENV || 'test';
-// const configuration = require('../knexfile')[environment];
-// const database = require('knex')(configuration);
-
 const chai = require('chai');
 const should = chai.should();
 const chaiHttp = require('chai-http');
 const server = require('../server');
+const environment = process.env.NODE_ENV || 'test';
+const configuration = require('../knexfile')[environment];
+const database = require('knex')(configuration);
 
 chai.use(chaiHttp);
 
@@ -36,6 +35,23 @@ describe('Client Routes', () => {
 });
 
 describe('API Routes', () => {
+
+  before((done) => {
+    database.migrate.latest()
+      .then( () => done())
+      .catch(error => {
+        throw error;
+      });
+  });
+
+  beforeEach((done) => {
+    database.seed.run()
+      .then(() => done())
+      .catch(error => {
+        throw error;
+      });
+  });
+
   describe('GET /api/v1/projects', () => {
     it('should return all of the students', () => {
       return chai.request(server)
@@ -52,5 +68,130 @@ describe('API Routes', () => {
           throw error;
         });
     });
+
+    it('should return a 404 if the path is incorrect', (done) => {
+      chai.request(server)
+        .get('/api/v1/hello')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
+  });
+
+  describe('POST /api/v1/projects', () => {
+
+    it('should be able to add a project to database', (done) => {
+      chai.request(server)
+        .post('/api/v1/projects')
+        .send({
+          id: 2,
+          project_name: 'project2'
+        })
+        .end((error, response) => {
+          response.should.have.status(201);
+          response.body.should.be.a('object');
+          response.body.should.have.property('id');
+          response.body.id.should.equal(2);
+          chai.request(server)
+            .get('/api/v1/projects')
+            .end((error, response) => {
+              response.body.should.be.a('array');
+              response.body.length.should.equal(2);
+              done();
+            });
+        });
+    });
+
+    it('should not create a project with missing data', (done) => {
+      chai.request(server)
+        .post('/api/v1/projects')
+        .send({
+          id: 2
+        })
+        .end((error, response) => {
+          response.should.have.status(422);
+          done();
+        });
+    });
+
+  });
+
+  describe('GET /api/v1/palettes/:id', () => {
+
+    it.skip('should retrieve all palettes', (done) => {
+      chai.request(server)
+        .get('/api/v1/palettes/1')
+        .end((error, response) => {
+          response.should.have.status(200);
+          response.should.be.json;
+          response.body.should.be.a('array');
+          response.body.length.should.equal(1);
+          response.body[0].should.have.property('id');
+          response.body[0].id.should.equal(1);
+          response.body[0].should.have.property('name');
+          response.body[0].project_name.should.equal('Cool Sunset');
+          response.body[0].should.have.property('color_1');
+          response.body[0].color_1.should.equal('#01084f');
+          response.body[0].should.have.property('color_2');
+          response.body[0].color_2.should.equal('#391954');
+          response.body[0].should.have.property('color_3');
+          response.body[0].color_3.should.equal('#631e50');
+          response.body[0].should.have.property('color_4');
+          response.body[0].color_4.should.equal('#a73c5a');
+          response.body[0].should.have.property('color_5');
+          response.body[0].color_5.should.equal('#ff7954');
+          response.body[0].should.have.property('project_id');
+          // response.body[1].should.have.property('id');
+          // response.body[1].id.should.equal(2);
+          // response.body[1].should.have.property('name');
+          // response.body[1].project_name.should.equal('Summer Ice');
+          // response.body[1].should.have.property('color_1');
+          // response.body[1].color_1.should.equal('#f4a644');
+          // response.body[1].should.have.property('color_2');
+          // response.body[1].color_2.should.equal('#f9914b');
+          // response.body[1].should.have.property('color_3');
+          // response.body[1].color_3.should.equal('#f47b52');
+          // response.body[1].should.have.property('color_4');
+          // response.body[1].color_4.should.equal('#f25e5e');
+          // response.body[1].should.have.property('color_5');
+          // response.body[1].color_5.should.equal('#f64863');
+          //response.body[1].should.have.property('project_id');
+          done();
+        });
+    });
+
+    it('should return a 404 if the path is incorrect', (done) => {
+      chai.request(server)
+        .get('/api/v1/hello')
+        .end((error, response) => {
+          response.should.have.status(404);
+          done();
+        });
+    });
+
+  });
+
+  describe('DELETE /api/v1/palettes/:id', () => {
+
+    it('should delete a palette from database', (done) => {
+      chai.request(server)
+        .delete('/api/v1/palettes/1')
+        .end((error, response) => {
+          response.should.have.status(204);
+          done();
+        });
+    });
+
+    it('should return a 422 error if the palette is not found', (done) => {
+      chai.request(server)
+        .delete('/api/v1/palettes/500')
+        .end((error, response) => {
+          response.should.have.status(422);
+          response.body.error.should.equal('Not Found');
+          done();
+        });
+    });
+
   });
 });

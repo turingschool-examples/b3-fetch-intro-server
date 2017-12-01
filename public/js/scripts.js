@@ -36,7 +36,7 @@ const fetchProjects = () => {
 };
 
 const appendProject = (project, projectId) => {
-  console.log($('aside').find({projectId}).length);
+  $('.project-directory').html('');
   $('.project-directory').prepend(`
     <aside class="saved-project">
       <h4 class=${projectId}>${project.project_name}</h4>
