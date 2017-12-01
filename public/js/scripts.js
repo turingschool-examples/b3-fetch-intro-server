@@ -52,7 +52,7 @@ const addProjectToList = (projectName, projectId) => {
   $('#project-menu').prepend(`
     <option
       value="${projectId}"
-      id="${projectName}" selected>
+      id="${projectName}">
       ${projectName}
     </option>
   `);

@@ -58,7 +58,6 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-bottom: 15px;
 }
 
 .color {
@@ -91,19 +90,21 @@ body {
 
 .generate-btn {
   display: block;
-  height: 25px;
+  height: 40px;
   margin: 0 auto;
   padding: 3px 5px;
-  width: 25%;
+  width: 100%;
   background-color: #313132;
   border: none;
   border-radius: 2px;
   color: #fff;
-  font-size: 80%;
+  font-size: 90%;
+  outline: none;
 }
 
 .generate-btn:hover {
   background-color: #DADAE2;
+  cursor: pointer;
 }
 
 .save-palette {
@@ -116,13 +117,16 @@ body {
 
 #project-menu {
   height: 25px;
-  width: 70px;
+  width: 20%;
   margin-right: 10px;
   border: none;
+  background-color: #313132;
+  color: #fff;
 }
 
 .new-palette-container {
-  margin: 10px 15px;
+  margin: 23px 0px 12px 0px;
+  text-align: center;
 }
 
 .palette-subtitle {
@@ -131,7 +135,7 @@ body {
 
 #new-palette {
   height: 25px;
-  width: 160px;
+  width: 40%;
   margin-right: 10px;
   padding-left: 5px;
   border: none;
@@ -150,7 +154,7 @@ body {
 
 #new-palette-btn {
   height: 25px;
-  width: 70px;
+  width: 20%;
   background-color: #313132;
   border: none;
   border-radius: 2px;
@@ -160,6 +164,7 @@ body {
 
 #new-palette-btn:hover {
   background-color: #DADAE2;
+  cursor: pointer;
 }
 
 .projects {
@@ -179,7 +184,7 @@ body {
 }
 
 .projects-form {
-  padding-left: 35%;
+  padding-left: 27.5%;
 }
 
 .projects-subtitle {
@@ -189,7 +194,7 @@ body {
 
 #new-project {
   height: 25px;
-  width: 160px;
+  width: 50%;
   padding-left: 5px;
   border: none;
   border: 1px solid #313132;
@@ -207,7 +212,7 @@ body {
 
 #new-project-btn {
   height: 25px;
-  width: 70px;
+  width: 25%;
   background-color: #313132;
   border: none;
   border-radius: 2px;
@@ -216,6 +221,7 @@ body {
 
 #new-project-btn:hover {
   background-color: #DADAE2;
+  cursor: pointer;
 }
 
 .project-directory {
@@ -233,20 +239,22 @@ body {
 }
 
 li {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 0.25fr;
+  grid-template-areas: "name palette delete";
   padding-top: 10px;
   width: 90%;
 }
 
 .small-palette-name {
   margin-right: 10px;
+  grid-area: name;
 }
 
 .small-palette {
   display: flex;
   flex-direction: row;
+  grid-area: palette;
 }
 
 .palette-color {
@@ -261,4 +269,9 @@ li {
   background-image: url(../assets/delete-icon.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  grid-area: delete;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
 }
