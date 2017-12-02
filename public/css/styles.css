@@ -19,9 +19,10 @@ body {
 .main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   height: 100%;
   margin: 0px auto;
-  padding: 0 10px;
+  padding: 10px 40px 40px 40px;
   width: 90%;
   background-color: #E8E8E8;
 }
@@ -29,27 +30,27 @@ body {
 .instruction-section {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  /*width: 95%;*/
 }
 
 .instruction-aside {
   background-color: #fff;
   color: #313132;
   border-radius: 1px;
-  margin: 10px;
+  margin: 10px 0px 30px 0px;
   padding: 10px;
-
+  width: 22.5%;
 }
 
 .main-bottom {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .main-left {
   width: 45%;
-  /*box-shadow: 5px 5px 20px 0px #D3D3D3;*/
 }
 
 .pick-palette {
