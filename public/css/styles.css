@@ -70,21 +70,21 @@ body {
 }
 
 .empty-heart-icon {
-  background-image: url(../assets/empty-heart.svg);
+  background-image: url(../assets/unlock.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   margin-top: 15px;
 }
 
 .full-heart-icon {
-  background-image: url(../assets/full-heart.svg);
+  background-image: url(../assets/padlock.svg);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   margin-top: 15px;
 }
 
