@@ -10,57 +10,85 @@
   </head>
   <body>
     <section class="main-body">
-      <nav>
-        <h1 class="title">Palette Picker</h1>
-      </nav>
       <main class="main">
-        <section class="main-left">
-          <article class="pick-palette">
-            <section class="colors">
-              <div class="color color1">
-                <div class="empty-heart-icon icon"></div>
-                <p class="hex-code hex-code1"></p>
-              </div>
-              <div class="color color2">
-                <div class="empty-heart-icon icon"></div>
-                <p class="hex-code hex-code2"></p>
-              </div>
-              <div class="color color3">
-                <div class="empty-heart-icon icon"></div>
-                <p class="hex-code hex-code3"></p>
-              </div>
-              <div class="color color4">
-                <div class="empty-heart-icon icon"></div>
-                <p class="hex-code hex-code4"></p>
-              </div>
-              <div class="color color5">
-                <div class="empty-heart-icon icon"></div>
-                <p class="hex-code hex-code5"></p>
-              </div>
-            </section>
-            <button type="button" name="generate" class="generate-btn">
-              Generate More Colors
-            </button>
-            <aside class="new-palette-container">
-                  <select id="project-menu" type="text" name="" value="">
-                    <option selected>Select a Project</option>
-                  </select>
-                  <input id="new-palette" type="text" name="" value="" placeholder="New Palette Name">
-                  <input id="new-palette-btn" type="submit" name="" value="save!">
-            </aside>
-          </article>
+        <h1 class="title">Palette Picker</h1>
+        <section class="instruction-section">
+          <aside class="instruction-aside">
+            <h4>Create a Project</h4>
+            <p class="instructions-text">Use the form to create as many new projects as you'd like.</p>
+          </aside>
+          <aside class="instruction-aside">
+            <h4>Pick a Palette</h4>
+            <p class="instructions-text">Click the 'Generate More Colors' button to see new colors. Lock a color to keep it, but re-generate the others.</p>
+          </aside>
+          <aside class="instruction-aside">
+            <h4>Save a Palette</h4>
+            <p class="instructions-text">When you like your palette, select a project, name the palette, and click save.</p>
+          </aside>
+          <aside class="instruction-aside">
+            <h4>Change your mind?</h4>
+            <p class="instructions-text">Click the 'x' for any palette to delete it.</p>
+          </aside>
         </section>
-        <article class="projects">
-          <section class="projects-form">
-            <h2 class="projects-subtitle">Projects</h2>
-            <input id="new-project" type="text" placeholder="New Project Name">
-            <input id="new-project-btn" type="submit">
+        <section class="main-bottom">
+          <article class="projects">
+            <section class="projects-form">
+              <h2 class="projects-subtitle">Projects</h2>
+              <input id="new-project" type="text" placeholder="New Project Name">
+              <input id="new-project-btn" type="submit">
+            </section>
+            <section class="project-directory">
+              <aside class="saved-project"></aside>
+            </section>
+          </article>
+          <section class="main-left">
+            <article class="pick-palette">
+              <section class="colors">
+                <div class="color color1">
+                  <div class="empty-heart-icon icon"></div>
+                  <p class="hex-code hex-code1"></p>
+                </div>
+                <div class="color color2">
+                  <div class="empty-heart-icon icon"></div>
+                  <p class="hex-code hex-code2"></p>
+                </div>
+                <div class="color color3">
+                  <div class="empty-heart-icon icon"></div>
+                  <p class="hex-code hex-code3"></p>
+                </div>
+                <div class="color color4">
+                  <div class="empty-heart-icon icon"></div>
+                  <p class="hex-code hex-code4"></p>
+                </div>
+                <div class="color color5">
+                  <div class="empty-heart-icon icon"></div>
+                  <p class="hex-code hex-code5"></p>
+                </div>
+              </section>
+              <button type="button" name="generate" class="generate-btn">
+                Generate More Colors
+              </button>
+              <aside class="new-palette-container">
+                    <select id="project-menu" type="text" name="" value="">
+                      <option selected>Select a Project</option>
+                    </select>
+                    <input id="new-palette" type="text" name="" value="" placeholder="New Palette Name">
+                    <input id="new-palette-btn" type="submit" name="" value="save!">
+              </aside>
+            </article>
           </section>
-          <section class="project-directory">
-            <aside class="saved-project"></aside>
+          <!-- <article class="projects">
+            <section class="projects-form">
+              <h2 class="projects-subtitle">Projects</h2>
+              <input id="new-project" type="text" placeholder="New Project Name">
+              <input id="new-project-btn" type="submit">
+            </section>
+            <section class="project-directory">
+              <aside class="saved-project"></aside>
+            </section>
+          </article> -->
           </section>
-        </article>
-      </main>
+        </main>
     </section>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script

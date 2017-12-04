@@ -6,39 +6,56 @@
 }
 
 body {
-  background-image: url(../assets/background2.png);
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-color: #ececec;
 }
 
 .title {
-  padding: 15px 0 0 75px;
+  text-align: center;
+  padding: 20px 0;
+  /*padding: 15px 0 0 75px;*/
   color: #313132;
   font-size: 220%;
   text-transform: uppercase;
 }
 
-.main-body {
-  position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.5);
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  margin: 0px auto;
+  padding: 10px 40px 40px 40px;
+  width: 90%;
+  background-color: #f7f7f7;
 }
 
-.main {
-  display: block;
-  height: 100vh;
-  margin: 0px auto;
-  padding: 0 10px;
-  width: 80%;
+.instruction-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.instruction-aside {
+  background-color: #fff;
+  color: #313132;
+  border-radius: 1px;
+  margin: 10px 0px 30px 0px;
+  padding: 10px;
+  width: 22.5%;
+}
+
+.instructions-text {
+  font-size: 80%;
+}
+
+.main-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .main-left {
-  position: absolute;
-  left: 75px;
-  top: 90px;
-  z-index: 3;
-  width: 50%;
-  box-shadow: 5px 5px 20px 0px #66666A;
+  width: 55%;
 }
 
 .pick-palette {
@@ -70,21 +87,21 @@ body {
 }
 
 .empty-heart-icon {
-  background-image: url(../assets/empty-heart.svg);
+  background-image: url(../assets/unlock.svg);
   background-repeat: no-repeat;
   background-size: contain;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   margin-top: 15px;
 }
 
 .full-heart-icon {
-  background-image: url(../assets/full-heart.svg);
+  background-image: url(../assets/padlock.svg);
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
-  height: 25px;
-  width: 25px;
+  height: 30px;
+  width: 30px;
   margin-top: 15px;
 }
 
@@ -117,7 +134,7 @@ body {
 
 #project-menu {
   height: 25px;
-  width: 20%;
+  width: 22.5%;
   margin-right: 10px;
   border: none;
   background-color: #313132;
@@ -155,7 +172,7 @@ body {
 
 #new-palette-btn {
   height: 25px;
-  width: 20%;
+  width: 22.5%;
   background-color: #313132;
   border: none;
   border-radius: 2px;
@@ -170,27 +187,22 @@ body {
 }
 
 .projects {
-  position: absolute;
-  top: 0;
-  left: 47.5%;
-  z-index: 2;
-  width: 45%;
+  width: 35%;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  padding-top: 20px;
+  height: 100%;
+  padding: 30px;
   background-color: #fff;
   border-radius: 1px;
-  box-shadow: 5px 5px 20px 0px #66666A;
   color: #313132;
 }
 
 .projects-form {
-  padding-left: 27.5%;
+  /*padding-left: 27.5%;*/
 }
 
 .projects-subtitle {
-  padding: 24px 0 12px 0;
+  padding-bottom: 12px;
   font-size: 150%;
 }
 
@@ -229,8 +241,7 @@ body {
 
 .project-directory {
   margin-top: 30px;
-  padding-left: 27.5%;
-  width: 90%;
+  
 }
 
 .saved-project {
