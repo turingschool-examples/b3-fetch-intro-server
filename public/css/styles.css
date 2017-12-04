@@ -12,7 +12,6 @@ body {
 .title {
   text-align: center;
   padding: 20px 0;
-  /*padding: 15px 0 0 75px;*/
   color: #313132;
   font-size: 220%;
   text-transform: uppercase;
@@ -241,11 +240,29 @@ body {
 
 .project-directory {
   margin-top: 30px;
-  
 }
 
 .saved-project {
-  margin: 10px 0 20px 2px;
+  margin: 10px 0 30px 2px;
+}
+
+.project-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.delete-project {
+  background-color: #BFBFC2;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  outline: none;
+  padding: 0 8px;
+}
+
+.delete-project:hover {
+  background-color: #DFDFE1;
 }
 
 .project-list {
