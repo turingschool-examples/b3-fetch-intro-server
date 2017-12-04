@@ -6,7 +6,8 @@
 }
 
 body {
-  background-color: #ececec;
+  /*background-color: #ececec;*/
+  background-color: red;
 }
 
 .title {
@@ -241,7 +242,7 @@ body {
 
 .project-directory {
   margin-top: 30px;
-  
+
 }
 
 .saved-project {
