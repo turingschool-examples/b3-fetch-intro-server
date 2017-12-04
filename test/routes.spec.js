@@ -164,7 +164,7 @@ describe('API Routes', () => {
 
   describe('POST /api/v1/projects/:id/palettes', () => {
 
-    it('should be able to add a project to database', (done) => {
+    it.skip('should be able to add a project to database', (done) => {
       chai.request(server)
         .post('/api/v1/projects/1/palettes')
         .send({
