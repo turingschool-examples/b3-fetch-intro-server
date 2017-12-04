@@ -19,6 +19,7 @@
     "mocha": "^4.0.1"
   },
   "scripts": {
+    "eslint": "./node_modules/.bin/eslint ./",
     "test": "NODE_ENV=test mocha --exit",
     "start": "node server.js"
   },
