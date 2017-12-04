@@ -39,8 +39,11 @@ const fetchProjects = () => {
 
 const appendProject = (project, projectId) => {
   $('.project-directory').prepend(`
-    <aside class="saved-project">
-      <h4 class=${projectId}>${project.project_name}</h4>
+    <aside class="saved-project" id="${projectId}">
+      <div class="project-header">
+        <h4 class=${projectId}>${project.project_name}</h4>
+        <button class="delete-project">delete</button>
+      </div>
       <ul class="project-list" id="project-${projectId}">
       </ul>
     </aside>
@@ -180,10 +183,25 @@ const toggleFavorite = (event) => {
 
 const deleteSmallPalette = (event) => {
   event.preventDefault();
-  const id = $(event.target).closest('li').attr('id');
   $(event.target).closest('li').remove();
 
+  const id = $(event.target).closest('li').attr('id');
+
   fetch(`/api/v1/palettes/${id}`, {
+    method: 'DELETE',
+  })
+    .catch(error => {
+      throw error;
+    });
+};
+
+const deleteProject = (event) => {
+  event.preventDefault();
+  $(event.target).closest('aside').remove();
+
+  const id = $(event.target).closest('aside').attr('id');
+
+  fetch(`/api/v1/projects/${id}`, {
     method: 'DELETE',
   })
     .catch(error => {
@@ -224,3 +242,4 @@ $('.generate-btn').on('click', updateRandomColors);
 $('#new-palette-btn').on('click', grabPalette);
 $('.icon').on('click', toggleFavorite);
 $('.project-directory').on('click', '.delete-icon', deleteSmallPalette);
+$('.project-directory').on('click', '.delete-project', deleteProject);

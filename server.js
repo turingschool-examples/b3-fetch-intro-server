@@ -111,6 +111,23 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
 
 });
 
+app.delete('/api/v1/projects/:id', (request, response) => {
+  const { id } = request.params;
+
+  database('projects').where({ id }).del()
+    .then(project => {
+      if (project) {
+        return response.sendStatus(204);
+      } else {
+        return response.status(422).json({ error: 'Not Found' });
+      }
+    })
+    .catch(error => {
+      return response.status(500).json({ error });
+    });
+//do I now need to find all of it's palettes and delete them also?
+});
+
 app.listen(app.get('port'), () => {
   /*eslint-disable no-console*/
   console.log(`${app.locals.title} is running on ${app.get('port')}.`);
