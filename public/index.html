@@ -10,27 +10,37 @@
   </head>
   <body>
     <section class="main-body">
-      <h1 class="title">Palette Picker</h1>
       <main class="main">
+        <h1 class="title">Palette Picker</h1>
         <section class="instruction-section">
           <aside class="instruction-aside">
             <h4>Create a Project</h4>
-            <p>here are the instructions</p>
+            <p class="instructions-text">Use the form to create as many new projects as you'd like.</p>
           </aside>
           <aside class="instruction-aside">
             <h4>Pick a Palette</h4>
-            <p>here are the instructions</p>
+            <p class="instructions-text">Click the 'Generate More Colors' button to see new colors. Lock a color to keep it, but re-generate the others.</p>
           </aside>
           <aside class="instruction-aside">
             <h4>Save a Palette</h4>
-            <p>here are the instructions</p>
+            <p class="instructions-text">When you like your palette, select a project, name the palette, and click save.</p>
           </aside>
           <aside class="instruction-aside">
             <h4>Change your mind?</h4>
-            <p>here are the instructions</p>
+            <p class="instructions-text">Click the 'x' for any palette to delete it.</p>
           </aside>
         </section>
         <section class="main-bottom">
+          <article class="projects">
+            <section class="projects-form">
+              <h2 class="projects-subtitle">Projects</h2>
+              <input id="new-project" type="text" placeholder="New Project Name">
+              <input id="new-project-btn" type="submit">
+            </section>
+            <section class="project-directory">
+              <aside class="saved-project"></aside>
+            </section>
+          </article>
           <section class="main-left">
             <article class="pick-palette">
               <section class="colors">
@@ -67,7 +77,7 @@
               </aside>
             </article>
           </section>
-          <article class="projects">
+          <!-- <article class="projects">
             <section class="projects-form">
               <h2 class="projects-subtitle">Projects</h2>
               <input id="new-project" type="text" placeholder="New Project Name">
@@ -76,7 +86,7 @@
             <section class="project-directory">
               <aside class="saved-project"></aside>
             </section>
-          </article>
+          </article> -->
           </section>
         </main>
     </section>
