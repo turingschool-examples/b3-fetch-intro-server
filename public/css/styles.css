@@ -201,9 +201,15 @@ body {
   font-size: 150%;
 }
 
+.project-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 #new-project {
   height: 25px;
-  width: 50%;
+  width: 65%;
   padding-left: 5px;
   border: none;
   border: 1px solid #313132;
@@ -221,7 +227,7 @@ body {
 
 #new-project-btn {
   height: 25px;
-  width: 25%;
+  width: 32.5%;
   background-color: #313132;
   border: none;
   border-radius: 2px;
