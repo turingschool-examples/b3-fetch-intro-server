@@ -236,6 +236,15 @@ const generateSavedPalette = (event) => {
   });
 };
 
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    /* eslint-disable no-console*/
+    navigator.serviceWorker.register('./service-worker.js')
+      .then((registration) => console.log(`Success! ${registration}`))
+      .catch((error) => console.log(`ServiceWorker Registration failed: ${error}`));
+  });
+}
+
 $('.project-directory').on('click', '.small-palette', generateSavedPalette);
 $('#new-project-btn').on('click', checkDuplicateName);
 $('.generate-btn').on('click', updateRandomColors);
