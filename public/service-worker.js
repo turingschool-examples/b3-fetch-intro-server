@@ -25,15 +25,15 @@ this.addEventListener('fetch', event => {
   );
 });
 
-// this.addEventListener('activate', event => {
-//   let cacheKeep = ['assets-v1'];
-//   event.waitUntil(
-//     caches.keys().then(keys => {
-//       return Promise.all(keys.map(key => {
-//         if (cacheKeep.indexOf(key) === -1) {
-//           return caches.delete(key);
-//         }
-//       }));
-//     })
-//   );
-// });
+this.addEventListener('activate', event => {
+  let cacheKeep = ['assets-v1'];
+  event.waitUntil(
+    caches.keys().then(keys => {
+      return Promise.all(keys.map(key => {
+        if (cacheKeep.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
