@@ -6,10 +6,6 @@ const configuration = require('./knexfile')[environment];
 const database = require('knex')(configuration);
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname + '/public')));
-
 const requireHTTPS = (request, response, next) => {
   //eslint-disable-next-line eqeqeq
   if (request.header('x-forwarded-proto') != 'https') {
@@ -21,6 +17,11 @@ const requireHTTPS = (request, response, next) => {
 if (process.env.NODE_ENV === 'production') { app.use(requireHTTPS); }
 
 app.set('port', process.env.PORT || 3000);
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname + '/public')));
+
 app.locals.title = 'Palette Picker';
 
 app.get('/', (request, response) => {
