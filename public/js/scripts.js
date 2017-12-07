@@ -239,7 +239,7 @@ const generateSavedPalette = (event) => {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     /* eslint-disable no-console*/
-    navigator.serviceWorker.register('./service-worker.js')
+    navigator.serviceWorker.register('../service-worker.js')
       .then((registration) => console.log(`Success! ${registration}`))
       .catch((error) => console.log(`ServiceWorker Registration failed: ${error}`));
   });
