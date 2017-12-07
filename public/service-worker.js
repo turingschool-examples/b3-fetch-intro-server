@@ -6,11 +6,10 @@ this.addEventListener('install', event => {
           '/',
           '/js/scripts.js',
           '/css/styles.css',
-          '/lib/jquery-3.2.1.js',
           '/assets/color-palette.svg',
           '/assets/delete-icon.svg',
           '/assets/padlock.svg',
-          '/assets/unlock.svg',
+          '/assets/unlock.svg'
         ]);
       })
   );
