@@ -186,11 +186,11 @@ body {
 }
 
 .projects {
-  width: 35%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 30px;
+  padding: 25px;
   background-color: #fff;
   border-radius: 1px;
   color: #313132;
@@ -307,4 +307,35 @@ li {
 
 .delete-icon:hover {
   cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+
+  .instruction-aside {
+    width: 24%;
+  }
+  
+  .main-bottom {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .main-left {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .projects {
+    width: 100%;
+  }
+
+  .project-directory {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .saved-project {
+    width: 44%;
+    margin-right: 5%;
+  }
 }
