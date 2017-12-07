@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + '/public')));
 
 const requireHTTPS = (request, response, next) => {
-  if (request.header('x-forwarded-proto') != 'https') {
+  if (request.header('x-forwarded-proto') !== 'https') {
     return response.redirect(`https://${request.header('host')}${request.url}`);
   }
   next();
