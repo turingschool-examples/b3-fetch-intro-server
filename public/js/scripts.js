@@ -1,3 +1,71 @@
+//eslint-disable-next-line no-undef
+/*eslint-disable*/
+let db = new Dexie('palettePicker');
+
+db.version(1).stores({
+  projects: 'id, project_name',
+  palettes:
+    'id, palette_title, color1, color2, color3, color4, color5, projectId',
+});
+
+const saveOfflineProjects = (projects) => {
+  return db.projects.add({id: Date.now(), projects});
+};
+
+const saveOfflinePalettes = (palettes) => {
+  return db.projects.add({id: Date.now(), palettes});
+};
+
+const loadOfflineProjects = () => {
+  return db.projects.toArray();
+};
+
+const loadOfflinePalettes = () => {
+  return db.palettes.toArray();
+};
+
+navigator.serviceWorker.addEventListener('message', event => {
+  if (event.data.type === 'project') {
+    setPendingProjectsToSynced()
+      .then(result => {
+        console.log('send setPendingProjectsToSynced log', result);
+      })
+      .catch(error => console.error(error));
+  } else if (event.data.type === 'palette') {
+    setPendingPalettesToSynced()
+      .then(() => {
+      })
+      .catch(error => console.error(error));
+  }
+});
+
+
+const setPendingProjectsToSynced = () => {
+  return db.projects.where('status')
+    .equals('pendingSync')
+    .modify({status: 'synced'});
+};
+
+const setPendingPalettesToSynced = () => {
+  return db.palettes.where('status')
+    .equals('pendingSync')
+    .modify({status: 'synced'});
+};
+
+const sendProjectToSync = project => {
+  navigator.serviceWorker.controller.postMessage({
+    type: 'projects',
+    project
+  });
+};
+
+const sendPaletteToSync = palette => {
+  navigator.serviceWorker.controller.postMessage({
+    type: 'palettes',
+    palette
+  });
+};
+
 $(document).ready(() => {
   updateRandomColors();
   fetchProjects();
@@ -32,6 +100,12 @@ const fetchProjects = () => {
         fetchPalettes(project.id);
       });
     })
+    .catch(() => getOfflineProjects());
+};
+
+const getOfflineProjects = () => {
+  loadOfflineProjects()
+    .then(projects => appendProject(projects, projects.id))
     .catch(error => {
       throw error;
     });
@@ -65,13 +139,19 @@ const fetchPalettes = (projectId) => {
   fetch( `/api/v1/projects/${projectId}/palettes`)
     .then(response => response.json())
     .then(palettes => appendPalettes(palettes, projectId))
+    .catch(() => getOfflinePalettes());
+};
+
+const getOfflinePalettes = () => {
+  loadOfflinePalettes()
+    .then(palettes => appendPalettes(palettes, palettes.id))
     .catch(error => {
       throw error;
     });
 };
 
 const appendPalettes = (palettes, projectId) => {
-  return palettes.forEach((palette) => {
+  return palettes.forEach(palette => {
     /*eslint-disable max-len*/
     $(`#project-${projectId}`).append(`
       <li
@@ -130,12 +210,19 @@ const postProject = () => {
       $('.project-directory').html('');
       $('#project-menu').html(`<option selected>Select a Project</option>`);
       fetchProjects();
+      makeOfflineProjects();
     })
     .catch(error => {
       throw error;
     });
 
   $('#new-project').val('');
+};
+
+const makeOfflineProjects = (name) => {
+  saveOfflineProjects({id: Date.now(), project_name: name})
+    .then(() => console.log('IndexedDC store - success!'))
+    .catch(error => console.error('Error storing locally: ', error));
 };
 
 const grabPalette = (event) => {
@@ -169,11 +256,19 @@ const postPalette = (body) => {
     .then(newPalette => {
       $(`#project-${body.project_id}`).html('');
       fetchPalettes(body.project_id);
-      appendPalettes(newPalette, body.project_id);
+      // appendPalettes(newPalette, body.project_id);
+      //not sure if this should be deleted
+      makeOfflinePalettes(body);
     })
     .catch(error => {
       throw error;
     });
+};
+
+const makeOfflinePalettes = (body) => {
+  saveOfflinePalettes({ id: Date.now(), body })
+    .then(() => console.log('success storing palettes'))
+    .catch(error => console.error('Error storing palettes locally: ', error));
 };
 
 const toggleFavorite = (event) => {
@@ -209,6 +304,9 @@ const deleteProject = (event) => {
     });
 };
 
+
+
+
 const checkDuplicateName = () => {
   const projectName = $('#new-project').val();
 
@@ -236,9 +334,9 @@ const generateSavedPalette = (event) => {
   });
 };
 
+/* eslint-disable no-console*/
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    /* eslint-disable no-console*/
     navigator.serviceWorker.register('../service-worker.js')
       .then((registration) => console.log(`Success! ${registration}`))
       .catch((error) => console.log(`ServiceWorker Registration failed: ${error}`));
