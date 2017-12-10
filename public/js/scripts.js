@@ -13,7 +13,7 @@ const saveOfflineProjects = (projects) => {
 };
 
 const saveOfflinePalettes = (palettes) => {
-  return db.projects.add({id: Date.now(), palettes});
+  return db.palettes.add({id: Date.now(), palettes});
 };
 
 const loadOfflineProjects = () => {
@@ -38,7 +38,6 @@ navigator.serviceWorker.addEventListener('message', event => {
       .catch(error => console.error(error));
   }
 });
-
 
 const setPendingProjectsToSynced = () => {
   return db.projects.where('status')
@@ -139,12 +138,12 @@ const fetchPalettes = (projectId) => {
   fetch( `/api/v1/projects/${projectId}/palettes`)
     .then(response => response.json())
     .then(palettes => appendPalettes(palettes, projectId))
-    .catch(() => getOfflinePalettes());
+    .catch(() => getOfflinePalettes(projectId));
 };
 
-const getOfflinePalettes = () => {
+const getOfflinePalettes = (projectId) => {
   loadOfflinePalettes()
-    .then(palettes => appendPalettes(palettes, palettes.id))
+    .then(palettes => appendPalettes(palettes, projectId))
     .catch(error => {
       throw error;
     });
@@ -210,7 +209,7 @@ const postProject = () => {
       $('.project-directory').html('');
       $('#project-menu').html(`<option selected>Select a Project</option>`);
       fetchProjects();
-      makeOfflineProjects();
+      makeOfflineProjects(newProjectName);
     })
     .catch(error => {
       throw error;
@@ -256,8 +255,6 @@ const postPalette = (body) => {
     .then(newPalette => {
       $(`#project-${body.project_id}`).html('');
       fetchPalettes(body.project_id);
-      // appendPalettes(newPalette, body.project_id);
-      //not sure if this should be deleted
       makeOfflinePalettes(body);
     })
     .catch(error => {
@@ -303,9 +300,6 @@ const deleteProject = (event) => {
       throw error;
     });
 };
-
-
-
 
 const checkDuplicateName = () => {
   const projectName = $('#new-project').val();
