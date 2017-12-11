@@ -1,6 +1,6 @@
 this.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('assets-v2')
+    caches.open('assets-v3')
       .then(cache => {
         return cache.addAll([
           '/',
@@ -25,7 +25,7 @@ this.addEventListener('fetch', event => {
 });
 
 this.addEventListener('activate', event => {
-  let cacheKeep = ['assets-v2'];
+  let cacheKeep = ['assets-v3'];
   event.waitUntil(
     caches.keys().then(keys => {
       return Promise.all(keys.map(key => {
