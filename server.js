@@ -136,7 +136,6 @@ app.delete('/api/v1/projects/:id', (request, response) => {
     .catch(error => {
       return response.status(500).json({ error });
     });
-//do I now need to find all of it's palettes and delete them also?
 });
 
 app.listen(app.get('port'), () => {
