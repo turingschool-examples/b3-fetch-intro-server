@@ -36,7 +36,7 @@ app.get('https://b3-fetch-intro-server.herokuapp.com/', (request, response) => {
   response.send('Welcome to Palette Picker!');
 });
 
-app.get('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects', (request, response) => {
+app.get('/api/v1/projects', (request, response) => {
   database('projects').select()
     .then(projects => {
       return response.status(200).json(projects);
