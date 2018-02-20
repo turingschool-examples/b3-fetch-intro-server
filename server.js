@@ -22,6 +22,7 @@ app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname + '/public')));
+
 app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -31,11 +32,11 @@ app.use((req, res, next) => {
 
 app.locals.title = 'Palette Picker';
 
-app.get('/', (request, response) => {
+app.get('https://b3-fetch-intro-server.herokuapp.com/', (request, response) => {
   response.send('Welcome to Palette Picker!');
 });
 
-app.get('/api/v1/projects', (request, response) => {
+app.get('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects', (request, response) => {
   database('projects').select()
     .then(projects => {
       return response.status(200).json(projects);
@@ -45,7 +46,7 @@ app.get('/api/v1/projects', (request, response) => {
     });
 });
 
-app.get('/api/v1/projects/:id/palettes', (request, response) => {
+app.get('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id/palettes', (request, response) => {
   const projectId = request.params.id;
 
   database('palettes').where('project_id', projectId).select()
@@ -61,7 +62,7 @@ app.get('/api/v1/projects/:id/palettes', (request, response) => {
     });
 });
 
-app.post('/api/v1/projects', (request, response) => {
+app.post('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects', (request, response) => {
   const project = request.body;
 
   for (let requiredParameter of ['project_name']) {
@@ -81,7 +82,7 @@ app.post('/api/v1/projects', (request, response) => {
     });
 });
 
-app.post('/api/v1/projects/:id/palettes', (request, response) => {
+app.post('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id/palettes', (request, response) => {
   let palette = request.body;
   const projectId = request.params.id;
 
@@ -112,7 +113,7 @@ app.post('/api/v1/projects/:id/palettes', (request, response) => {
 
 });
 
-app.delete('/api/v1/palettes/:id', (request, response) => {
+app.delete('https://b3-fetch-intro-server.herokuapp.com/api/v1/palettes/:id', (request, response) => {
   const { id } = request.params;
 
   database('palettes').where({ id }).del()
@@ -129,7 +130,7 @@ app.delete('/api/v1/palettes/:id', (request, response) => {
 
 });
 
-app.delete('/api/v1/projects/:id', (request, response) => {
+app.delete('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id', (request, response) => {
   const { id } = request.params;
 
   database('projects').where({ id }).del()
