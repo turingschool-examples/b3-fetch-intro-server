@@ -32,7 +32,7 @@ app.use((req, res, next) => {
 
 app.locals.title = 'Palette Picker';
 
-app.get('https://b3-fetch-intro-server.herokuapp.com/', (request, response) => {
+app.get('/', (request, response) => {
   response.send('Welcome to Palette Picker!');
 });
 
@@ -46,7 +46,7 @@ app.get('/api/v1/projects', (request, response) => {
     });
 });
 
-app.get('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id/palettes', (request, response) => {
+app.get('/api/v1/projects/:id/palettes', (request, response) => {
   const projectId = request.params.id;
 
   database('palettes').where('project_id', projectId).select()
@@ -62,7 +62,7 @@ app.get('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id/palette
     });
 });
 
-app.post('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects', (request, response) => {
+app.post('/api/v1/projects', (request, response) => {
   const project = request.body;
 
   for (let requiredParameter of ['project_name']) {
@@ -82,7 +82,7 @@ app.post('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects', (request
     });
 });
 
-app.post('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id/palettes', (request, response) => {
+app.post('/api/v1/projects/:id/palettes', (request, response) => {
   let palette = request.body;
   const projectId = request.params.id;
 
@@ -113,7 +113,7 @@ app.post('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id/palett
 
 });
 
-app.delete('https://b3-fetch-intro-server.herokuapp.com/api/v1/palettes/:id', (request, response) => {
+app.delete('/api/v1/palettes/:id', (request, response) => {
   const { id } = request.params;
 
   database('palettes').where({ id }).del()
@@ -130,7 +130,7 @@ app.delete('https://b3-fetch-intro-server.herokuapp.com/api/v1/palettes/:id', (r
 
 });
 
-app.delete('https://b3-fetch-intro-server.herokuapp.com/api/v1/projects/:id', (request, response) => {
+app.delete('/api/v1/projects/:id', (request, response) => {
   const { id } = request.params;
 
   database('projects').where({ id }).del()
